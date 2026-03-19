@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HSS Motors Dealers | Admin</title>
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+  <header class="header">
+    <div class="top-bar">
+      <span>Call: 0116860686 | Nairobi, Kenya</span>
+      <span>Admin Dashboard</span>
+    </div>
+    <div class="main-header">
+      <div class="brand">HSS Motors Dealers</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search cars, models, brands" data-filter data-filter-search>
+        <button type="button">Search</button>
+      </div>
+      <div class="header-actions">
+        <a href="signin.html">Sign In</a>
+        <a href="contact.html">Help</a>
+        <a class="cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="sell.html">Sell Your Car</a>
+        <a href="checkout.html">Checkout</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </nav>
+    <div class="model-dashboard">
+      <span class="dash-label">Models</span>
+      <div class="dash-track" data-models></div>
+    </div>
+    <div class="status-bar" data-status>Loading cars...</div>
+  </header>
+
+  <main class="page-wrap">
+    <section class="section reveal">
+      <div class="section-title">
+        <h1 class="page-title">Admin Panel</h1>
+        <p>Add new cars, update listings, and mark sold inventory.</p>
+      </div>
+      <div class="card-grid">
+        <form class="form" data-admin-form>
+          <input type="text" placeholder="Car Name" data-required>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Brand" data-required>
+          <span class="error-text"></span>
+          <input type="number" placeholder="Year" data-required>
+          <span class="error-text"></span>
+          <input type="number" placeholder="Price (KES)" data-required>
+          <span class="error-text"></span>
+          <select data-required>
+            <option value="">Type</option>
+            <option value="SUV">SUV</option>
+            <option value="Sedan">Sedan</option>
+            <option value="Truck">Truck</option>
+            <option value="Hatchback">Hatchback</option>
+            <option value="Van">Van</option>
+          </select>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Hero Image URL" data-required>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Exterior Image URL" data-required>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Interior Image URL" data-required>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Engine Image URL" data-required>
+          <span class="error-text"></span>
+          <input type="text" placeholder="Video URL (optional)">
+          <textarea rows="4" placeholder="Description" data-required></textarea>
+          <span class="error-text"></span>
+          <div class="form-success" data-admin-success></div>
+          <div class="admin-actions">\n            <button class="btn btn-primary" type="submit">Add Car</button>\n            <button class="btn btn-secondary" type="button" data-import-xml>Import XML</button>\n          </div>
+        </form>
+        <div class="card">
+          <div class="card-body">
+            <h3>Manage Inventory</h3>
+            <p>Cars added here will appear on the public website. Mark sold cars to remove them from listings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Current Inventory</h2>
+      </div>
+      <div class="card-grid" data-admin-list></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h3>HSS Motors Dealers</h3>
+        <p>Phone: 0116860686</p>
+        <p>Email: hiramcharagu@gmail.com</p>
+      </div>
+      <div>
+        <h4>Social Media</h4>
+        <div class="socials">
+          <a href="#">TikTok</a>
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">X</a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="inventory.html">Inventory</a></p>
+        <p><a href="sell.html">Sell Your Car</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
+
+
