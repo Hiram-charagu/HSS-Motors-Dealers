@@ -395,6 +395,42 @@ async function setupAdmin() {
   const list = qs('[data-admin-list]');
   if (!form || !list) return;
 
+  const heroInput = form.querySelector('[data-admin-hero]');
+  const imagesInput = form.querySelector('[data-admin-images]');
+  const interiorInput = form.querySelector('[data-admin-interior]');
+  const engineInput = form.querySelector('[data-admin-engine]');
+  const videoInput = form.querySelector('[data-admin-video]');
+  const imagePreview = form.querySelector('[data-admin-image-preview]');
+  const videoPreview = form.querySelector('[data-admin-video-preview]');
+
+  if (imagesInput) {
+    imagesInput.addEventListener('change', () => {
+      imagePreview.innerHTML = '';
+      [...imagesInput.files].forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const img = document.createElement('img');
+          img.src = reader.result;
+          imagePreview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+  }
+
+  if (videoInput) {
+    videoInput.addEventListener('change', () => {
+      videoPreview.innerHTML = '';
+      const file = videoInput.files[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const video = document.createElement('video');
+      video.controls = true;
+      video.src = url;
+      videoPreview.appendChild(video);
+    });
+  }
+
   const renderAdminList = async () => {
     const snap = await getDocs(collection(db, 'cars'));
     list.innerHTML = '';
@@ -418,6 +454,7 @@ async function setupAdmin() {
   };
 
   await renderAdminList();
+
   const importBtn = form.querySelector('[data-import-xml]');
   if (importBtn) {
     importBtn.addEventListener('click', async () => {
@@ -454,66 +491,103 @@ async function setupAdmin() {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const inputs = [...form.querySelectorAll('input, select, textarea')];
-    const values = inputs.map((i) => i.value.trim());
-    if (values.slice(0, 9).some((v) => !v)) return;
-    const [name, brand, year, price, type, hero, exterior, interior, engine, video, description] = values;
+
+    const success = form.querySelector('[data-admin-success]');
+    if (success) {
+      success.textContent = 'Uploading...';
+      success.classList.add('show');
+    }
+
+    const name = form.querySelector('input[placeholder="Car Name"]').value.trim();
+    const brand = form.querySelector('input[placeholder="Brand"]').value.trim();
+    const year = Number(form.querySelector('input[placeholder="Year"]').value.trim());
+    const price = Number(form.querySelector('input[placeholder="Price (KES)"]').value.trim());
+    const type = form.querySelector('select').value.trim();
+    const description = form.querySelector('textarea').value.trim();
+
+    if (!name || !brand || !year || !price || !type || !description) return;
+
+    let heroUrl = '';
+    if (heroInput && heroInput.files[0]) {
+      const file = heroInput.files[0];
+      const result = await upload(`admin_hero/${Date.now()}_${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        multipart: true
+      });
+      heroUrl = result.url;
+    }
+
+    let exteriorUrl = '';
+    if (imagesInput && imagesInput.files[0]) {
+      const file = imagesInput.files[0];
+      const result = await upload(`admin_exterior/${Date.now()}_${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        multipart: true
+      });
+      exteriorUrl = result.url;
+    }
+
+    let interiorUrl = '';
+    if (interiorInput && interiorInput.files[0]) {
+      const file = interiorInput.files[0];
+      const result = await upload(`admin_interior/${Date.now()}_${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        multipart: true
+      });
+      interiorUrl = result.url;
+    }
+
+    let engineUrl = '';
+    if (engineInput && engineInput.files[0]) {
+      const file = engineInput.files[0];
+      const result = await upload(`admin_engine/${Date.now()}_${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        multipart: true
+      });
+      engineUrl = result.url;
+    }
+
+    let videoUrl = '';
+    if (videoInput && videoInput.files[0]) {
+      const file = videoInput.files[0];
+      const result = await upload(`admin_video/${Date.now()}_${file.name}`, file, {
+        access: 'public',
+        handleUploadUrl: '/api/upload',
+        multipart: true
+      });
+      videoUrl = result.url;
+    }
+
     await addDoc(collection(db, 'cars'), {
       name,
       brand,
       year,
-      price: Number(price),
+      price,
       type,
-      hero,
-      exterior,
-      view: exterior,
-      interior,
-      engine,
-      video,
+      hero: heroUrl,
+      exterior: exteriorUrl || heroUrl,
+      view: exteriorUrl || heroUrl,
+      interior: interiorUrl || heroUrl,
+      engine: engineUrl || heroUrl,
+      video: videoUrl,
       description,
       status: 'available',
       createdAt: serverTimestamp()
     });
-    const success = form.querySelector('[data-admin-success]');
+
     if (success) {
       success.textContent = 'Car added successfully.';
-      success.classList.add('show');
     }
+
     form.reset();
+    if (imagePreview) imagePreview.innerHTML = '';
+    if (videoPreview) videoPreview.innerHTML = '';
+
     await renderAdminList();
-  const importBtn = form.querySelector('[data-import-xml]');
-  if (importBtn) {
-    importBtn.addEventListener('click', async () => {
-      importBtn.disabled = true;
-      importBtn.textContent = 'Importing...';
-      const res = await fetch('data/cars.xml');
-      const text = await res.text();
-      const xml = new DOMParser().parseFromString(text, 'text/xml');
-      const cars = [...xml.querySelectorAll('car')].map((node) => ({
-        name: node.querySelector('name')?.textContent ?? '',
-        brand: node.querySelector('brand')?.textContent ?? '',
-        year: Number(node.querySelector('year')?.textContent ?? 0),
-        price: Number(node.querySelector('price')?.textContent ?? 0),
-        type: node.querySelector('type')?.textContent ?? '',
-        hero: node.querySelector('hero')?.textContent ?? '',
-        exterior: node.querySelector('exterior')?.textContent ?? '',
-        view: node.querySelector('view')?.textContent ?? '',
-        interior: node.querySelector('interior')?.textContent ?? '',
-        engine: node.querySelector('engine')?.textContent ?? '',
-        video: node.querySelector('video')?.textContent ?? '',
-        description: node.querySelector('description')?.textContent ?? '',
-        status: 'available',
-        createdAt: serverTimestamp()
-      }));
-      for (const car of cars) {
-        await addDoc(collection(db, 'cars'), car);
-      }
-      importBtn.textContent = 'Import XML';
-      importBtn.disabled = false;
-      await renderAdminList();
-      await loadCars();
-    });
-  }
     await loadCars();
   });
 
@@ -523,39 +597,6 @@ async function setupAdmin() {
       const id = target.getAttribute('data-remove');
       await updateDoc(doc(db, 'cars', id), { status: 'sold' });
       await renderAdminList();
-  const importBtn = form.querySelector('[data-import-xml]');
-  if (importBtn) {
-    importBtn.addEventListener('click', async () => {
-      importBtn.disabled = true;
-      importBtn.textContent = 'Importing...';
-      const res = await fetch('data/cars.xml');
-      const text = await res.text();
-      const xml = new DOMParser().parseFromString(text, 'text/xml');
-      const cars = [...xml.querySelectorAll('car')].map((node) => ({
-        name: node.querySelector('name')?.textContent ?? '',
-        brand: node.querySelector('brand')?.textContent ?? '',
-        year: Number(node.querySelector('year')?.textContent ?? 0),
-        price: Number(node.querySelector('price')?.textContent ?? 0),
-        type: node.querySelector('type')?.textContent ?? '',
-        hero: node.querySelector('hero')?.textContent ?? '',
-        exterior: node.querySelector('exterior')?.textContent ?? '',
-        view: node.querySelector('view')?.textContent ?? '',
-        interior: node.querySelector('interior')?.textContent ?? '',
-        engine: node.querySelector('engine')?.textContent ?? '',
-        video: node.querySelector('video')?.textContent ?? '',
-        description: node.querySelector('description')?.textContent ?? '',
-        status: 'available',
-        createdAt: serverTimestamp()
-      }));
-      for (const car of cars) {
-        await addDoc(collection(db, 'cars'), car);
-      }
-      importBtn.textContent = 'Import XML';
-      importBtn.disabled = false;
-      await renderAdminList();
-      await loadCars();
-    });
-  }
       await loadCars();
     }
   });
@@ -665,6 +706,7 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
 

@@ -68,19 +68,25 @@
             <option value="Van">Van</option>
           </select>
           <span class="error-text"></span>
-          <input type="text" placeholder="Hero Image URL" data-required>
-          <span class="error-text"></span>
-          <input type="text" placeholder="Exterior Image URL" data-required>
-          <span class="error-text"></span>
-          <input type="text" placeholder="Interior Image URL" data-required>
-          <span class="error-text"></span>
-          <input type="text" placeholder="Engine Image URL" data-required>
-          <span class="error-text"></span>
-          <input type="text" placeholder="Video URL (optional)">
+          <label>Hero Image</label>
+          <input type="file" accept="image/*" data-admin-hero>
+          <label>Exterior Images</label>
+          <input type="file" accept="image/*" multiple data-admin-images>
+          <div class="upload-preview" data-admin-image-preview></div>
+          <label>Interior Image</label>
+          <input type="file" accept="image/*" data-admin-interior>
+          <label>Engine Image</label>
+          <input type="file" accept="image/*" data-admin-engine>
+          <label>Video (optional)</label>
+          <input type="file" accept="video/*" data-admin-video>
+          <div class="upload-preview" data-admin-video-preview></div>
           <textarea rows="4" placeholder="Description" data-required></textarea>
           <span class="error-text"></span>
           <div class="form-success" data-admin-success></div>
-          <div class="admin-actions">\n            <button class="btn btn-primary" type="submit">Add Car</button>\n            <button class="btn btn-secondary" type="button" data-import-xml>Import XML</button>\n          </div>
+          <div class="admin-actions">
+            <button class="btn btn-primary" type="submit">Add Car</button>
+            <button class="btn btn-secondary" type="button" data-import-xml>Import XML</button>
+          </div>
         </form>
         <div class="card">
           <div class="card-body">
@@ -127,5 +133,3 @@
   <script type="module" src="scripts/app.js"></script>
 </body>
 </html>
-
-
