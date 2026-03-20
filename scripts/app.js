@@ -1,4 +1,4 @@
-﻿import { db, storage } from "./firebase.js";
+﻿import { db } from "./firebase.js";\nimport { upload } from "https://esm.sh/@vercel/blob/client";
 import {
   collection,
   getDocs,
@@ -7,7 +7,6 @@ import {
   doc,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
 const state = {
   cars: [],
@@ -666,5 +665,8 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+
+
 
 
