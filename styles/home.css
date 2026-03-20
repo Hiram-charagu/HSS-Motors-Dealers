@@ -1,0 +1,64 @@
+﻿.hero {
+  animation: heroGlow 8s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+  0%, 100% { box-shadow: 0 18px 38px rgba(27, 43, 59, 0.35); }
+  50% { box-shadow: 0 20px 42px rgba(200, 162, 77, 0.35); }
+}
+
+.featured-slider {
+  border: 1px solid rgba(27, 43, 59, 0.08);
+  padding: 12px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.deals-strip {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.deals-strip .deal-card {
+  padding: 10px;
+}
+.jumia-layout {
+  grid-template-columns: 220px 1fr 220px;
+}
+
+.quick-deals {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 10px;
+}
+
+.quick-deals h4 {
+  margin-bottom: 4px;
+}
+
+.quick-deals .promo-card {
+  background: #fff7eb;
+}
+
+@media (max-width: 1100px) {
+  .jumia-layout {
+    grid-template-columns: 1fr;
+  }
+  .quick-deals {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+}
+
+.featured-track .card img {
+  height: 140px;
+  object-fit: contain;
+  background: #f7f7f7;
+}
+
+.featured-track .card {
+  min-width: 220px;
+}

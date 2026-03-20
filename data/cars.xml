@@ -1,0 +1,844 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cars>
+  <car id="c1">
+    <name>Toyota Land Cruiser V8</name>
+    <brand>Toyota</brand>
+    <year>2018</year>
+    <price>2800000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_1.png</hero>
+    <exterior>images%20folder/car_views/car_100_front.png</exterior>
+    <view>images%20folder/car_views/car_100_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Toyota Land Cruiser V8 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c2">
+    <name>Nissan Patrol Platinum</name>
+    <brand>Nissan</brand>
+    <year>2019</year>
+    <price>3250000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_10.png</hero>
+    <exterior>images%20folder/car_views/car_101_front.png</exterior>
+    <view>images%20folder/car_views/car_101_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_2.png</interior>
+    <engine>images%20folder/engine_photos/engine_2.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Nissan Patrol Platinum is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c3">
+    <name>Mercedes-Benz GLE 450</name>
+    <brand>Mercedes-Benz</brand>
+    <year>2020</year>
+    <price>3700000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_100.png</hero>
+    <exterior>images%20folder/car_views/car_102_front.png</exterior>
+    <view>images%20folder/car_views/car_102_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_3.png</interior>
+    <engine>images%20folder/engine_photos/engine_3.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Mercedes-Benz GLE 450 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c4">
+    <name>BMW X5 M Sport</name>
+    <brand>BMW</brand>
+    <year>2021</year>
+    <price>4150000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_101.png</hero>
+    <exterior>images%20folder/car_views/car_103_front.png</exterior>
+    <view>images%20folder/car_views/car_103_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_4.png</interior>
+    <engine>images%20folder/engine_photos/engine_4.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>BMW X5 M Sport is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c5">
+    <name>Audi Q5 Quattro</name>
+    <brand>Audi</brand>
+    <year>2022</year>
+    <price>4600000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_102.png</hero>
+    <exterior>images%20folder/car_views/car_104_front.png</exterior>
+    <view>images%20folder/car_views/car_104_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_5.png</interior>
+    <engine>images%20folder/engine_photos/engine_5.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Audi Q5 Quattro is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c6">
+    <name>Lexus RX 350</name>
+    <brand>Lexus</brand>
+    <year>2023</year>
+    <price>5050000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_103.png</hero>
+    <exterior>images%20folder/car_views/car_105_front.png</exterior>
+    <view>images%20folder/car_views/car_105_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_6.png</interior>
+    <engine>images%20folder/engine_photos/engine_6.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Lexus RX 350 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c7">
+    <name>Range Rover Evoque</name>
+    <brand>Range</brand>
+    <year>2024</year>
+    <price>5500000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_104.png</hero>
+    <exterior>images%20folder/car_views/car_106_front.png</exterior>
+    <view>images%20folder/car_views/car_106_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_7.png</interior>
+    <engine>images%20folder/engine_photos/engine_7.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Range Rover Evoque is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c8">
+    <name>Toyota Prado TX</name>
+    <brand>Toyota</brand>
+    <year>2018</year>
+    <price>5950000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_105.png</hero>
+    <exterior>images%20folder/car_views/car_107_front.png</exterior>
+    <view>images%20folder/car_views/car_107_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_8.png</interior>
+    <engine>images%20folder/engine_photos/engine_8.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Toyota Prado TX is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c9">
+    <name>Mazda CX-5 Touring</name>
+    <brand>Mazda</brand>
+    <year>2019</year>
+    <price>6400000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_106.png</hero>
+    <exterior>images%20folder/car_views/car_108_front.png</exterior>
+    <view>images%20folder/car_views/car_108_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_9.png</interior>
+    <engine>images%20folder/engine_photos/engine_9.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Mazda CX-5 Touring is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c10">
+    <name>Hyundai Tucson GLS</name>
+    <brand>Hyundai</brand>
+    <year>2020</year>
+    <price>6850000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_107.png</hero>
+    <exterior>images%20folder/car_views/car_109_front.png</exterior>
+    <view>images%20folder/car_views/car_109_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_10.png</interior>
+    <engine>images%20folder/engine_photos/engine_10.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Hyundai Tucson GLS is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c11">
+    <name>Kia Sportage EX</name>
+    <brand>Kia</brand>
+    <year>2021</year>
+    <price>2800000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_108.png</hero>
+    <exterior>images%20folder/car_views/car_110_front.png</exterior>
+    <view>images%20folder/car_views/car_110_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_11.png</interior>
+    <engine>images%20folder/engine_photos/engine_11.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Kia Sportage EX is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c12">
+    <name>Subaru Forester XT</name>
+    <brand>Subaru</brand>
+    <year>2022</year>
+    <price>3250000</price>
+    <type>SUV</type>
+    <hero>images%20folder/hhs_cars_200_images/car_109.png</hero>
+    <exterior>images%20folder/car_views/car_111_front.png</exterior>
+    <view>images%20folder/car_views/car_111_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_12.png</interior>
+    <engine>images%20folder/engine_photos/engine_12.png</engine>
+    <video>images%20folder/car_videos/car_video_1.mp4</video>
+    <description>Subaru Forester XT is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c13">
+    <name>Mercedes-Benz E300</name>
+    <brand>Mercedes-Benz</brand>
+    <year>2018</year>
+    <price>2950000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_11.png</hero>
+    <exterior>images%20folder/car_views/car_130_front.png</exterior>
+    <view>images%20folder/car_views/car_130_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_13.png</interior>
+    <engine>images%20folder/engine_photos/engine_13.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Mercedes-Benz E300 is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c14">
+    <name>BMW 3 Series M Sport</name>
+    <brand>BMW</brand>
+    <year>2019</year>
+    <price>3400000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_110.png</hero>
+    <exterior>images%20folder/car_views/car_131_front.png</exterior>
+    <view>images%20folder/car_views/car_131_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_14.png</interior>
+    <engine>images%20folder/engine_photos/engine_14.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>BMW 3 Series M Sport is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c15">
+    <name>Audi A4 S Line</name>
+    <brand>Audi</brand>
+    <year>2020</year>
+    <price>3850000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_111.png</hero>
+    <exterior>images%20folder/car_views/car_132_front.png</exterior>
+    <view>images%20folder/car_views/car_132_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_15.png</interior>
+    <engine>images%20folder/engine_photos/engine_15.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Audi A4 S Line is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c16">
+    <name>Toyota Camry XSE</name>
+    <brand>Toyota</brand>
+    <year>2021</year>
+    <price>4300000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_112.png</hero>
+    <exterior>images%20folder/car_views/car_133_front.png</exterior>
+    <view>images%20folder/car_views/car_133_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_16.png</interior>
+    <engine>images%20folder/engine_photos/engine_16.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Toyota Camry XSE is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c17">
+    <name>Honda Civic RS Turbo</name>
+    <brand>Honda</brand>
+    <year>2022</year>
+    <price>4750000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_113.png</hero>
+    <exterior>images%20folder/car_views/car_134_front.png</exterior>
+    <view>images%20folder/car_views/car_134_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_17.png</interior>
+    <engine>images%20folder/engine_photos/engine_17.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Honda Civic RS Turbo is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c18">
+    <name>Mazda 6 Touring</name>
+    <brand>Mazda</brand>
+    <year>2023</year>
+    <price>5200000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_114.png</hero>
+    <exterior>images%20folder/car_views/car_135_front.png</exterior>
+    <view>images%20folder/car_views/car_135_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_18.png</interior>
+    <engine>images%20folder/engine_photos/engine_18.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Mazda 6 Touring is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c19">
+    <name>Nissan Altima SV</name>
+    <brand>Nissan</brand>
+    <year>2024</year>
+    <price>5650000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_115.png</hero>
+    <exterior>images%20folder/car_views/car_136_front.png</exterior>
+    <view>images%20folder/car_views/car_136_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_19.png</interior>
+    <engine>images%20folder/engine_photos/engine_19.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Nissan Altima SV is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c20">
+    <name>Volkswagen Passat R-Line</name>
+    <brand>Volkswagen</brand>
+    <year>2018</year>
+    <price>6100000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_116.png</hero>
+    <exterior>images%20folder/car_views/car_137_front.png</exterior>
+    <view>images%20folder/car_views/car_137_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_20.png</interior>
+    <engine>images%20folder/engine_photos/engine_20.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Volkswagen Passat R-Line is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c21">
+    <name>Lexus IS 300</name>
+    <brand>Lexus</brand>
+    <year>2019</year>
+    <price>6550000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_117.png</hero>
+    <exterior>images%20folder/car_views/car_138_front.png</exterior>
+    <view>images%20folder/car_views/car_138_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_21.png</interior>
+    <engine>images%20folder/engine_photos/engine_21.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Lexus IS 300 is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c22">
+    <name>Hyundai Elantra GLS</name>
+    <brand>Hyundai</brand>
+    <year>2020</year>
+    <price>7000000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_118.png</hero>
+    <exterior>images%20folder/car_views/car_139_front.png</exterior>
+    <view>images%20folder/car_views/car_139_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_22.png</interior>
+    <engine>images%20folder/engine_photos/engine_22.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Hyundai Elantra GLS is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c23">
+    <name>Kia K5 GT-Line</name>
+    <brand>Kia</brand>
+    <year>2021</year>
+    <price>2950000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_119.png</hero>
+    <exterior>images%20folder/car_views/car_140_front.png</exterior>
+    <view>images%20folder/car_views/car_140_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_23.png</interior>
+    <engine>images%20folder/engine_photos/engine_23.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Kia K5 GT-Line is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c24">
+    <name>Subaru Legacy Premium</name>
+    <brand>Subaru</brand>
+    <year>2022</year>
+    <price>3400000</price>
+    <type>Sedan</type>
+    <hero>images%20folder/hhs_cars_200_images/car_12.png</hero>
+    <exterior>images%20folder/car_views/car_141_front.png</exterior>
+    <view>images%20folder/car_views/car_141_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_24.png</interior>
+    <engine>images%20folder/engine_photos/engine_24.png</engine>
+    <video>images%20folder/car_videos/car_video_2.mp4</video>
+    <description>Subaru Legacy Premium is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c25">
+    <name>Toyota Hilux Double Cab</name>
+    <brand>Toyota</brand>
+    <year>2018</year>
+    <price>3100000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_120.png</hero>
+    <exterior>images%20folder/car_views/car_160_front.png</exterior>
+    <view>images%20folder/car_views/car_160_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_25.png</interior>
+    <engine>images%20folder/engine_photos/engine_25.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Toyota Hilux Double Cab is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c26">
+    <name>Ford Ranger Wildtrak</name>
+    <brand>Ford</brand>
+    <year>2019</year>
+    <price>3550000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_121.png</hero>
+    <exterior>images%20folder/car_views/car_161_front.png</exterior>
+    <view>images%20folder/car_views/car_161_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_26.png</interior>
+    <engine>images%20folder/engine_photos/engine_26.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Ford Ranger Wildtrak is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c27">
+    <name>Isuzu D-Max X-Terrain</name>
+    <brand>Isuzu</brand>
+    <year>2020</year>
+    <price>4000000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_122.png</hero>
+    <exterior>images%20folder/car_views/car_162_front.png</exterior>
+    <view>images%20folder/car_views/car_162_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_27.png</interior>
+    <engine>images%20folder/engine_photos/engine_27.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Isuzu D-Max X-Terrain is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c28">
+    <name>Mitsubishi L200 GLS</name>
+    <brand>Mitsubishi</brand>
+    <year>2021</year>
+    <price>4450000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_123.png</hero>
+    <exterior>images%20folder/car_views/car_163_front.png</exterior>
+    <view>images%20folder/car_views/car_163_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_28.png</interior>
+    <engine>images%20folder/engine_photos/engine_28.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Mitsubishi L200 GLS is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c29">
+    <name>Nissan Navara Pro-4X</name>
+    <brand>Nissan</brand>
+    <year>2022</year>
+    <price>4900000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_124.png</hero>
+    <exterior>images%20folder/car_views/car_164_front.png</exterior>
+    <view>images%20folder/car_views/car_164_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_29.png</interior>
+    <engine>images%20folder/engine_photos/engine_29.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Nissan Navara Pro-4X is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c30">
+    <name>Volkswagen Amarok V6</name>
+    <brand>Volkswagen</brand>
+    <year>2023</year>
+    <price>5350000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_125.png</hero>
+    <exterior>images%20folder/car_views/car_165_front.png</exterior>
+    <view>images%20folder/car_views/car_165_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_30.png</interior>
+    <engine>images%20folder/engine_photos/engine_30.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Volkswagen Amarok V6 is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c31">
+    <name>Toyota Tacoma TRD</name>
+    <brand>Toyota</brand>
+    <year>2024</year>
+    <price>5800000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_126.png</hero>
+    <exterior>images%20folder/car_views/car_166_front.png</exterior>
+    <view>images%20folder/car_views/car_166_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_31.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Toyota Tacoma TRD is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c32">
+    <name>Chevrolet Colorado Z71</name>
+    <brand>Chevrolet</brand>
+    <year>2018</year>
+    <price>6250000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_127.png</hero>
+    <exterior>images%20folder/car_views/car_167_front.png</exterior>
+    <view>images%20folder/car_views/car_167_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_32.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Chevrolet Colorado Z71 is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c33">
+    <name>Ford F-150 XLT</name>
+    <brand>Ford</brand>
+    <year>2019</year>
+    <price>6700000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_128.png</hero>
+    <exterior>images%20folder/car_views/car_168_front.png</exterior>
+    <view>images%20folder/car_views/car_168_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_33.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Ford F-150 XLT is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c34">
+    <name>Isuzu D-Max V-Cross</name>
+    <brand>Isuzu</brand>
+    <year>2020</year>
+    <price>7150000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_129.png</hero>
+    <exterior>images%20folder/car_views/car_169_front.png</exterior>
+    <view>images%20folder/car_views/car_169_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_34.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Isuzu D-Max V-Cross is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c35">
+    <name>Nissan Titan XD</name>
+    <brand>Nissan</brand>
+    <year>2021</year>
+    <price>3100000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_13.png</hero>
+    <exterior>images%20folder/car_views/car_170_front.png</exterior>
+    <view>images%20folder/car_views/car_170_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_35.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Nissan Titan XD is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c36">
+    <name>Mahindra Pik Up</name>
+    <brand>Mahindra</brand>
+    <year>2022</year>
+    <price>3550000</price>
+    <type>Truck</type>
+    <hero>images%20folder/hhs_cars_200_images/car_130.png</hero>
+    <exterior>images%20folder/car_views/car_171_front.png</exterior>
+    <view>images%20folder/car_views/car_171_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_36.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_3.mp4</video>
+    <description>Mahindra Pik Up is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c37">
+    <name>Volkswagen Golf TSI</name>
+    <brand>Volkswagen</brand>
+    <year>2018</year>
+    <price>3250000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_131.png</hero>
+    <exterior>images%20folder/car_views/car_190_front.png</exterior>
+    <view>images%20folder/car_views/car_190_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Volkswagen Golf TSI is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c38">
+    <name>Mazda 3 Hatchback</name>
+    <brand>Mazda</brand>
+    <year>2019</year>
+    <price>3700000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_132.png</hero>
+    <exterior>images%20folder/car_views/car_191_front.png</exterior>
+    <view>images%20folder/car_views/car_191_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Mazda 3 Hatchback is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c39">
+    <name>Toyota Corolla Hatch</name>
+    <brand>Toyota</brand>
+    <year>2020</year>
+    <price>4150000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_133.png</hero>
+    <exterior>images%20folder/car_views/car_192_front.png</exterior>
+    <view>images%20folder/car_views/car_192_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Toyota Corolla Hatch is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c40">
+    <name>Honda Fit RS</name>
+    <brand>Honda</brand>
+    <year>2021</year>
+    <price>4600000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_134.png</hero>
+    <exterior>images%20folder/car_views/car_193_front.png</exterior>
+    <view>images%20folder/car_views/car_193_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Honda Fit RS is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c41">
+    <name>Suzuki Swift Sport</name>
+    <brand>Suzuki</brand>
+    <year>2022</year>
+    <price>5050000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_135.png</hero>
+    <exterior>images%20folder/car_views/car_194_front.png</exterior>
+    <view>images%20folder/car_views/car_194_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Suzuki Swift Sport is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c42">
+    <name>Ford Focus ST</name>
+    <brand>Ford</brand>
+    <year>2023</year>
+    <price>5500000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_136.png</hero>
+    <exterior>images%20folder/car_views/car_195_front.png</exterior>
+    <view>images%20folder/car_views/car_195_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Ford Focus ST is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c43">
+    <name>Kia Rio Hatch</name>
+    <brand>Kia</brand>
+    <year>2024</year>
+    <price>5950000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_137.png</hero>
+    <exterior>images%20folder/car_views/car_196_front.png</exterior>
+    <view>images%20folder/car_views/car_196_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Kia Rio Hatch is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c44">
+    <name>Hyundai i30</name>
+    <brand>Hyundai</brand>
+    <year>2018</year>
+    <price>6400000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_138.png</hero>
+    <exterior>images%20folder/car_views/car_197_front.png</exterior>
+    <view>images%20folder/car_views/car_197_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Hyundai i30 is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c45">
+    <name>Mini Cooper S</name>
+    <brand>Mini</brand>
+    <year>2019</year>
+    <price>6850000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_139.png</hero>
+    <exterior>images%20folder/car_views/car_198_front.png</exterior>
+    <view>images%20folder/car_views/car_198_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Mini Cooper S is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c46">
+    <name>Peugeot 308 GT</name>
+    <brand>Peugeot</brand>
+    <year>2020</year>
+    <price>7300000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_14.png</hero>
+    <exterior>images%20folder/car_views/car_199_front.png</exterior>
+    <view>images%20folder/car_views/car_199_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Peugeot 308 GT is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c47">
+    <name>Audi A1 Sportback</name>
+    <brand>Audi</brand>
+    <year>2021</year>
+    <price>3250000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_140.png</hero>
+    <exterior>images%20folder/car_views/car_200_front.png</exterior>
+    <view>images%20folder/car_views/car_200_side.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Audi A1 Sportback is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c48">
+    <name>Mercedes-Benz A200</name>
+    <brand>Mercedes-Benz</brand>
+    <year>2022</year>
+    <price>3700000</price>
+    <type>Hatchback</type>
+    <hero>images%20folder/hhs_cars_200_images/car_141.png</hero>
+    <exterior>images%20folder/car_views/car_201_front.png</exterior>
+    <view>images%20folder/car_views/car_201_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_4.mp4</video>
+    <description>Mercedes-Benz A200 is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c49">
+    <name>Toyota Hiace Super GL</name>
+    <brand>Toyota</brand>
+    <year>2018</year>
+    <price>3400000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_142.png</hero>
+    <exterior>images%20folder/car_views/car_220_front.png</exterior>
+    <view>images%20folder/car_views/car_220_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Toyota Hiace Super GL is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c50">
+    <name>Nissan NV350</name>
+    <brand>Nissan</brand>
+    <year>2019</year>
+    <price>3850000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_143.png</hero>
+    <exterior>images%20folder/car_views/car_221_front.png</exterior>
+    <view>images%20folder/car_views/car_221_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Nissan NV350 is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c51">
+    <name>Volkswagen Transporter</name>
+    <brand>Volkswagen</brand>
+    <year>2020</year>
+    <price>4300000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_144.png</hero>
+    <exterior>images%20folder/car_views/car_222_front.png</exterior>
+    <view>images%20folder/car_views/car_222_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Volkswagen Transporter is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c52">
+    <name>Mercedes-Benz Vito</name>
+    <brand>Mercedes-Benz</brand>
+    <year>2021</year>
+    <price>4750000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_145.png</hero>
+    <exterior>images%20folder/car_views/car_223_front.png</exterior>
+    <view>images%20folder/car_views/car_223_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Mercedes-Benz Vito is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c53">
+    <name>Toyota Alphard</name>
+    <brand>Toyota</brand>
+    <year>2022</year>
+    <price>5200000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_146.png</hero>
+    <exterior>images%20folder/car_views/car_224_front.png</exterior>
+    <view>images%20folder/car_views/car_224_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Toyota Alphard is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c54">
+    <name>Honda Stepwgn</name>
+    <brand>Honda</brand>
+    <year>2023</year>
+    <price>5650000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_147.png</hero>
+    <exterior>images%20folder/car_views/car_225_front.png</exterior>
+    <view>images%20folder/car_views/car_225_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Honda Stepwgn is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c55">
+    <name>Kia Carnival</name>
+    <brand>Kia</brand>
+    <year>2024</year>
+    <price>6100000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_148.png</hero>
+    <exterior>images%20folder/car_views/car_226_front.png</exterior>
+    <view>images%20folder/car_views/car_226_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Kia Carnival is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c56">
+    <name>Hyundai Staria</name>
+    <brand>Hyundai</brand>
+    <year>2018</year>
+    <price>6550000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_149.png</hero>
+    <exterior>images%20folder/car_views/car_227_front.png</exterior>
+    <view>images%20folder/car_views/car_227_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Hyundai Staria is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c57">
+    <name>Toyota Noah</name>
+    <brand>Toyota</brand>
+    <year>2019</year>
+    <price>7000000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_15.png</hero>
+    <exterior>images%20folder/car_views/car_228_front.png</exterior>
+    <view>images%20folder/car_views/car_228_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Toyota Noah is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c58">
+    <name>Nissan Serena</name>
+    <brand>Nissan</brand>
+    <year>2020</year>
+    <price>7450000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_150.png</hero>
+    <exterior>images%20folder/car_views/car_229_front.png</exterior>
+    <view>images%20folder/car_views/car_229_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Nissan Serena is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c59">
+    <name>Mazda Bongo</name>
+    <brand>Mazda</brand>
+    <year>2021</year>
+    <price>3400000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_151.png</hero>
+    <exterior>images%20folder/car_views/car_230_front.png</exterior>
+    <view>images%20folder/car_views/car_230_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Mazda Bongo is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+  <car id="c60">
+    <name>Isuzu NV200</name>
+    <brand>Isuzu</brand>
+    <year>2022</year>
+    <price>3850000</price>
+    <type>Van</type>
+    <hero>images%20folder/hhs_cars_200_images/car_152.png</hero>
+    <exterior>images%20folder/car_views/car_231_front.png</exterior>
+    <view>images%20folder/car_views/car_231_rear.png</view>
+    <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
+    <engine>images%20folder/engine_photos/engine_1.png</engine>
+    <video>images%20folder/car_videos/car_video_5.mp4</video>
+    <description>Isuzu NV200 is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
+  </car>
+</cars>
+

@@ -1,0 +1,10 @@
+﻿.admin-card {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
