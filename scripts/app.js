@@ -7,6 +7,8 @@ const state = {
 
 const cartKey = 'hhsCart';
 const roleKey = 'hhsRole';
+const promoKey = 'hhsPromo';
+const priceKey = 'hhsPriceOverrides';
 const adminCode = 'HSS-ADMIN-2026';
 
 const qs = (sel, scope = document) => scope.querySelector(sel);
@@ -113,8 +115,12 @@ async function loadCars() {
       description: node.querySelector('description')?.textContent?.trim() || ''
     }));
 
-    state.cars = cars;
-    state.filteredCars = cars;
+    const overrides = loadPriceOverrides();
+    state.cars = cars.map((car) => ({
+      ...car,
+      price: overrides[car.id] ? Number(overrides[car.id]) : car.price
+    }));
+    state.filteredCars = state.cars;
 
     renderCars();
     renderHomeCars();
@@ -122,6 +128,8 @@ async function loadCars() {
     renderTopDeals();
     populateFilters(cars);
     renderModelDashboard();
+    renderPromoBanner();
+    populateAdminPriceSelect();
 
     if (status) status.textContent = `Loaded ${cars.length} cars`;
   } catch (err) {
@@ -426,33 +434,27 @@ function setupValidation() {
         }
         if (message) valid = false;
       });
-      const roleSelect = qs('[data-role]', form);
       const adminCodeInput = qs('[data-admin-code]', form);
-      if (roleSelect && adminCodeInput) {
-        const isAdmin = roleSelect.value === 'admin';
+      if (adminCodeInput) {
         const adminError = adminCodeInput.nextElementSibling;
-        if (isAdmin) {
-          const code = adminCodeInput.value.trim();
-          const message = code === adminCode ? '' : 'Admin code is invalid.';
-          if (adminError && adminError.classList.contains('error-text')) {
-            adminError.textContent = message;
-          }
-          if (message) valid = false;
-        } else if (adminError && adminError.classList.contains('error-text')) {
-          adminError.textContent = '';
+        const code = adminCodeInput.value.trim();
+        const message = code === adminCode ? '' : 'Admin code is invalid.';
+        if (adminError && adminError.classList.contains('error-text')) {
+          adminError.textContent = message;
         }
+        if (message) valid = false;
       }
       const success = qs('[data-success]', form);
       if (success) {
         success.textContent = valid ? 'Submitted successfully. We will contact you soon.' : '';
       }
+      if (valid && form.hasAttribute('data-admin-login')) {
+        localStorage.setItem(roleKey, 'admin');
+        window.location.href = 'admin.html';
+        return;
+      }
       if (valid && form.hasAttribute('data-signin')) {
-        const role = roleSelect?.value || 'buyer';
-        localStorage.setItem(roleKey, role);
-        if (role === 'admin') {
-          window.location.href = 'admin.html';
-          return;
-        }
+        localStorage.setItem(roleKey, 'buyer');
         window.location.href = 'index.html';
         return;
       }
@@ -472,7 +474,7 @@ function setupAuth() {
   });
   const isAdminPage = document.body?.dataset?.page === 'admin';
   if (isAdminPage && role !== 'admin') {
-    window.location.href = 'signin.html';
+    window.location.href = 'admin-login.html';
   }
 }
 
@@ -497,5 +499,109 @@ document.addEventListener('DOMContentLoaded', () => {
   setupValidation();
   setupModalClose();
   setupFlashTimer();
+  setupAdminTools();
   loadCars();
 });
+
+function renderPromoBanner() {
+  const banner = qs('[data-promo-banner]');
+  if (!banner) return;
+  const data = loadPromo();
+  if (!data) {
+    banner.hidden = true;
+    return;
+  }
+  banner.hidden = false;
+  const title = qs('[data-promo-title]', banner);
+  const subtitle = qs('[data-promo-subtitle]', banner);
+  const image = qs('[data-promo-image]', banner);
+  if (title) title.textContent = data.title || 'Special Offer';
+  if (subtitle) subtitle.textContent = data.subtitle || '';
+  if (image && data.image) {
+    image.src = data.image;
+    image.style.display = 'block';
+  } else if (image) {
+    image.style.display = 'none';
+  }
+}
+
+function loadPromo() {
+  try {
+    const raw = localStorage.getItem(promoKey);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+function savePromo(data) {
+  localStorage.setItem(promoKey, JSON.stringify(data));
+  renderPromoBanner();
+}
+
+function loadPriceOverrides() {
+  try {
+    const raw = localStorage.getItem(priceKey);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function savePriceOverrides(overrides) {
+  localStorage.setItem(priceKey, JSON.stringify(overrides));
+}
+
+function populateAdminPriceSelect() {
+  const select = qs('[data-price-car]');
+  if (!select) return;
+  select.innerHTML = '<option value="">Select a car</option>';
+  state.cars.forEach((car) => {
+    const opt = document.createElement('option');
+    opt.value = car.id;
+    opt.textContent = `${car.name} (${car.year})`;
+    select.appendChild(opt);
+  });
+}
+
+function setupAdminTools() {
+  const promoForm = qs('[data-promo-form]');
+  if (promoForm) {
+    promoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const inputs = qsa('input', promoForm);
+      const title = inputs[0]?.value.trim() || '';
+      const subtitle = inputs[1]?.value.trim() || '';
+      const image = inputs[2]?.value.trim() || '';
+      if (!title || !subtitle) return;
+      savePromo({ title, subtitle, image });
+      const success = qs('[data-promo-success]', promoForm);
+      if (success) success.textContent = 'Promo saved.';
+      promoForm.reset();
+    });
+  }
+
+  const priceForm = qs('[data-price-form]');
+  if (priceForm) {
+    priceForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const select = qs('[data-price-car]', priceForm);
+      const priceInput = qsa('input', priceForm)[0];
+      if (!select || !priceInput) return;
+      const carId = select.value;
+      const newPrice = Number(priceInput.value || 0);
+      if (!carId || !newPrice) return;
+      const overrides = loadPriceOverrides();
+      overrides[carId] = newPrice;
+      savePriceOverrides(overrides);
+      state.cars = state.cars.map((car) => (car.id === carId ? { ...car, price: newPrice } : car));
+      renderCars();
+      renderHomeCars();
+      renderFeatured();
+      renderTopDeals();
+      const success = qs('[data-price-success]', priceForm);
+      if (success) success.textContent = 'Price updated.';
+      priceForm.reset();
+    });
+  }
+}

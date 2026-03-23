@@ -51,6 +51,40 @@
       <div class="card-grid">
         <div class="card">
           <div class="card-body">
+            <h3>Promo Manager</h3>
+            <p>Update the homepage promo banner for new offers.</p>
+            <form class="form" data-promo-form>
+              <input type="text" placeholder="Promo Title" data-required>
+              <span class="error-text"></span>
+              <input type="text" placeholder="Promo Subtitle" data-required>
+              <span class="error-text"></span>
+              <input type="text" placeholder="Promo Image URL (optional)">
+              <span class="error-text"></span>
+              <div class="form-success" data-promo-success></div>
+              <button class="btn btn-primary" type="submit">Save Promo</button>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3>Price Update</h3>
+            <p>Change prices directly for selected cars.</p>
+            <form class="form" data-price-form>
+              <select data-price-car>
+                <option value="">Select a car</option>
+              </select>
+              <span class="error-text"></span>
+              <input type="number" placeholder="New Price (KES)" data-required>
+              <span class="error-text"></span>
+              <div class="form-success" data-price-success></div>
+              <button class="btn btn-primary" type="submit">Update Price</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-body">
             <h3>Admin Roles</h3>
             <ul>
               <li>Inventory Manager: add, edit, and mark cars as sold.</li>
