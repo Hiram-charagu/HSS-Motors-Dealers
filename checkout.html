@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HSS Motors Dealers | Admin Login</title>
+  <title>HSS Motors Dealers | Cart & Checkout</title>
   <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/signin.css">
+  <link rel="stylesheet" href="styles/checkout.css">
 </head>
-<body data-page="admin-login">
+<body>
   <header class="header">
     <div class="top-bar">
       <span>Call: 0116860686 | Nairobi, Kenya</span>
-      <span>Admin Access</span>
+      <span>Secure Checkout</span>
     </div>
     <div class="main-header">
       <div class="brand">HSS Motors Dealers</div>
@@ -20,8 +20,9 @@
         <button type="button">Search</button>
       </div>
       <div class="header-actions">
-        <a href="signin.html">User Sign In</a>
+        <a href="signin.html">Sign In</a>
         <a href="contact.html">Help</a>
+        <a class="admin-link" href="admin.html" data-admin-link>Admin</a>
         <a class="cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
       </div>
     </div>
@@ -45,24 +46,34 @@
   <main class="page-wrap">
     <section class="section reveal">
       <div class="section-title">
-        <h1 class="page-title">Admin Login</h1>
-        <p>Authorized staff only. Enter your admin access code to continue.</p>
+        <h1 class="page-title">Your Cart</h1>
+        <p>Review your selected cars and submit a purchase request.</p>
       </div>
-      <div class="card-grid">
-        <form class="form js-validate" data-admin-login>
-          <input type="email" placeholder="Admin Email" data-required data-type="email">
+      <div class="checkout-grid">
+        <div class="cart-panel" data-cart-panel>
+          <h3>Selected Cars</h3>
+          <div class="cart-items" data-cart-items></div>
+          <p>Total: KES <span data-cart-total>0</span></p>
+        </div>
+        <form class="form js-validate" data-clear-cart="true">
+          <input type="text" placeholder="Full Name" data-required>
           <span class="error-text"></span>
-          <input type="password" placeholder="Admin Access Code" data-required data-admin-code>
+          <input type="email" placeholder="Email" data-required data-type="email">
+          <span class="error-text"></span>
+          <input type="text" placeholder="Phone" data-required data-type="phone">
+          <span class="error-text"></span>
+          <select data-required>
+            <option value="">Preferred Payment Method</option>
+            <option value="bank">Bank Transfer</option>
+            <option value="mpesa">M-Pesa</option>
+            <option value="cash">Cash</option>
+          </select>
+          <span class="error-text"></span>
+          <textarea rows="4" placeholder="Any special request" data-required></textarea>
           <span class="error-text"></span>
           <div class="form-success" data-success></div>
-          <button class="btn btn-primary" type="submit">Enter Admin Panel</button>
+          <button class="btn btn-primary" type="submit">Submit Checkout</button>
         </form>
-        <div class="card">
-          <div class="card-body">
-            <h3>Admin Roles</h3>
-            <p>Manage pricing, promos, inventory quality, and customer requests.</p>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -87,8 +98,7 @@
         <h4>Quick Links</h4>
         <p><a href="inventory.html">Inventory</a></p>
         <p><a href="sell.html">Sell Your Car</a></p>
-        <p><a href="checkout.html">Cart</a></p>
-        <p><a href="signin.html">User Sign In</a></p>
+        <p><a href="signin.html">Sign In</a></p>
         <p><a href="contact.html">Contact</a></p>
       </div>
     </div>

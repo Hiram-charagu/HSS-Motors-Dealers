@@ -1,0 +1,12 @@
+.checkout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.checkout-grid .cart-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}

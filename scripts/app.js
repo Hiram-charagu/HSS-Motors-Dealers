@@ -310,16 +310,7 @@ function applyFilters() {
 }
 
 function attachCardEvents() {
-  qsa('[data-add]').forEach((btn) => {
-    btn.onclick = (e) => {
-      e.stopPropagation();
-      addToCart(btn.getAttribute('data-add'));
-    };
-  });
-
-  qsa('[data-detail]').forEach((el) => {
-    el.onclick = () => openModal(el.getAttribute('data-detail'));
-  });
+  // Event delegation handled in setupCardDelegates.
 }
 
 function openModal(carId) {
@@ -402,6 +393,23 @@ function setupCartActions() {
     }
     const remove = target.getAttribute('data-remove');
     if (remove) removeFromCart(remove);
+  });
+}
+
+function setupCardDelegates() {
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof HTMLElement ? e.target : null;
+    if (!target) return;
+    const addBtn = target.closest('[data-add]');
+    if (addBtn) {
+      e.stopPropagation();
+      addToCart(addBtn.getAttribute('data-add'));
+      return;
+    }
+    const detailEl = target.closest('[data-detail]');
+    if (detailEl) {
+      openModal(detailEl.getAttribute('data-detail'));
+    }
   });
 }
 
@@ -503,6 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupAuth();
   loadCart();
   setupCartActions();
+  setupCardDelegates();
   setupFilters();
   setupValidation();
   setupModalClose();
