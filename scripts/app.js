@@ -6,6 +6,8 @@ const state = {
 };
 
 const cartKey = 'hhsCart';
+const roleKey = 'hhsRole';
+const adminCode = 'HSS-ADMIN-2026';
 
 const qs = (sel, scope = document) => scope.querySelector(sel);
 const qsa = (sel, scope = document) => [...scope.querySelectorAll(sel)];
@@ -424,9 +426,35 @@ function setupValidation() {
         }
         if (message) valid = false;
       });
+      const roleSelect = qs('[data-role]', form);
+      const adminCodeInput = qs('[data-admin-code]', form);
+      if (roleSelect && adminCodeInput) {
+        const isAdmin = roleSelect.value === 'admin';
+        const adminError = adminCodeInput.nextElementSibling;
+        if (isAdmin) {
+          const code = adminCodeInput.value.trim();
+          const message = code === adminCode ? '' : 'Admin code is invalid.';
+          if (adminError && adminError.classList.contains('error-text')) {
+            adminError.textContent = message;
+          }
+          if (message) valid = false;
+        } else if (adminError && adminError.classList.contains('error-text')) {
+          adminError.textContent = '';
+        }
+      }
       const success = qs('[data-success]', form);
       if (success) {
         success.textContent = valid ? 'Submitted successfully. We will contact you soon.' : '';
+      }
+      if (valid && form.hasAttribute('data-signin')) {
+        const role = roleSelect?.value || 'buyer';
+        localStorage.setItem(roleKey, role);
+        if (role === 'admin') {
+          window.location.href = 'admin.html';
+          return;
+        }
+        window.location.href = 'index.html';
+        return;
       }
       if (valid && form.dataset.clearCart === 'true') {
         state.cart = [];
@@ -435,6 +463,17 @@ function setupValidation() {
       if (valid) form.reset();
     });
   });
+}
+
+function setupAuth() {
+  const role = localStorage.getItem(roleKey) || 'guest';
+  qsa('[data-admin-link]').forEach((el) => {
+    el.style.display = role === 'admin' ? 'inline-flex' : 'none';
+  });
+  const isAdminPage = document.body?.dataset?.page === 'admin';
+  if (isAdminPage && role !== 'admin') {
+    window.location.href = 'signin.html';
+  }
 }
 
 function setupFlashTimer() {
@@ -451,6 +490,7 @@ function setupFlashTimer() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  setupAuth();
   loadCart();
   setupCartActions();
   setupFilters();

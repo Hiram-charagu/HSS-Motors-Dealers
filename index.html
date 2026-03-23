@@ -22,7 +22,8 @@
       <div class="header-actions">
         <a href="signin.html">Sign In</a>
         <a href="contact.html">Help</a>
-        <a class="cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
+        <a class="admin-link" href="admin.html" data-admin-link>Admin</a>
+        <a class="cart-pill" href="inventory.html">Cart: <span data-cart-count>0</span></a>
       </div>
     </div>
     <nav class="nav">
@@ -30,10 +31,8 @@
         <a href="index.html">Home</a>
         <a href="inventory.html">Inventory</a>
         <a href="sell.html">Sell Your Car</a>
-        <a href="checkout.html">Checkout</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="admin.html">Admin</a>
       </div>
     </nav>
     <div class="model-dashboard">
@@ -59,8 +58,35 @@
       <div class="hero-audio">
         <span>Background Music</span>
         <audio controls loop>
-          <source src="media/hero-music.mp3" type="audio/mpeg">
+          <source src="media/welcome.wav" type="audio/wav">
         </audio>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-title">
+        <h2>Showroom Highlights</h2>
+        <p>Walkthrough moments from our Nairobi showroom.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <video controls preload="metadata">
+            <source src="media/showroom-1.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <h3>Executive SUV Showcase</h3>
+            <p>Real-time look at the premium SUVs on the floor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <video controls preload="metadata">
+            <source src="media/showroom-2.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <h3>Luxury Sedan Tour</h3>
+            <p>Customer-ready sedans with clean interiors.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -157,9 +183,8 @@
         <h4>Quick Links</h4>
         <p><a href="inventory.html">Inventory</a></p>
         <p><a href="sell.html">Sell Your Car</a></p>
-        <p><a href="checkout.html">Checkout</a></p>
         <p><a href="signin.html">Sign In</a></p>
-        <p><a href="contact.html">Contact</a>`n        <a href="admin.html">Admin</a></p>
+        <p><a href="contact.html">Contact</a></p>
       </div>
     </div>
   </footer>

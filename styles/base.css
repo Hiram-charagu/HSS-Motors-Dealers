@@ -122,6 +122,20 @@ img {
   color: #6b3e00;
 }
 
+[data-admin-link] {
+  display: none;
+}
+
+.admin-link {
+  background: linear-gradient(135deg, #6d4bf7 0%, #2f7de1 100%);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.admin-link:hover {
+  box-shadow: var(--glow);
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -284,6 +298,14 @@ img {
   height: 190px;
   object-fit: contain;
   background: #fff9f1;
+}
+
+.card video {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #0f172a;
 }
 
 .card-body {

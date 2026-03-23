@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/admin.css">
 </head>
-<body>
+<body data-page="admin">
   <header class="header">
     <div class="top-bar">
       <span>Call: 0116860686 | Nairobi, Kenya</span>
@@ -22,7 +22,8 @@
       <div class="header-actions">
         <a href="signin.html">Sign In</a>
         <a href="contact.html">Help</a>
-        <a class="cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
+        <a class="admin-link" href="admin.html" data-admin-link>Admin</a>
+        <a class="cart-pill" href="inventory.html">Cart: <span data-cart-count>0</span></a>
       </div>
     </div>
     <nav class="nav">
@@ -30,10 +31,8 @@
         <a href="index.html">Home</a>
         <a href="inventory.html">Inventory</a>
         <a href="sell.html">Sell Your Car</a>
-        <a href="checkout.html">Checkout</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="admin.html">Admin</a>
       </div>
     </nav>
     <div class="model-dashboard">
@@ -50,6 +49,16 @@
         <p>Add new cars, update listings, and mark sold inventory.</p>
       </div>
       <div class="card-grid">
+        <div class="card">
+          <div class="card-body">
+            <h3>Admin Roles</h3>
+            <ul>
+              <li>Inventory Manager: add, edit, and mark cars as sold.</li>
+              <li>Listings Quality: verify photos, pricing, and details.</li>
+              <li>Customer Support: respond to buyer and seller requests.</li>
+            </ul>
+          </div>
+        </div>
         <form class="form" data-admin-form>
           <input type="text" placeholder="Car Name" data-required>
           <span class="error-text"></span>
