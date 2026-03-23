@@ -491,6 +491,14 @@ function setupFlashTimer() {
   }, 1000);
 }
 
+function setupCreateAccount() {
+  const btn = qs('[data-create-account]');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    window.location.href = 'contact.html#account';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupAuth();
   loadCart();
@@ -500,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupModalClose();
   setupFlashTimer();
   setupAdminTools();
+  setupCreateAccount();
   loadCars();
 });
 

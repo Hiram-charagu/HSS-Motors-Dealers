@@ -327,6 +327,43 @@ img {
   object-fit: contain;
   border-radius: 12px;
   background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.poster-tile {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.poster-tile video {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.poster-caption {
+  padding: 12px 14px 16px;
+}
+
+.poster-caption h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.poster-caption p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .card-body {
