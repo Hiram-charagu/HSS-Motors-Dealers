@@ -280,8 +280,8 @@ img {
 }
 
 .card img {
-  height: auto;
-  max-height: 200px;
+  width: 100%;
+  height: 190px;
   object-fit: contain;
   background: #fff9f1;
 }

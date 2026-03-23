@@ -1,9 +1,8 @@
 ﻿# dependencies
 node_modules/
 
-# local media/assets (too large for repo)
-images folder/
-media/
+# local media/assets
+# (kept in repo so GitHub Pages can serve images/videos)
 
 # OS
 .DS_Store

@@ -1,17 +1,7 @@
-﻿import { db } from "./firebase.js";\nimport { upload } from "https://esm.sh/@vercel/blob/client";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  doc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-
 const state = {
   cars: [],
-  cart: [],
   filteredCars: [],
+  cart: [],
   displayCount: 24
 };
 
@@ -27,6 +17,7 @@ function loadCart() {
   } catch {
     state.cart = [];
   }
+  updateCartCount();
 }
 
 function saveCart() {
@@ -100,9 +91,25 @@ async function loadCars() {
   const target = qs('[data-cars]') || qs('[data-featured]') || qs('[data-home-cars]') || qs('[data-models]');
   if (!target) return;
   try {
-    const snap = await getDocs(collection(db, 'cars'));
-    const cars = snap.docs.map((d) => ({ id: d.id, ...d.data() }))
-      .filter((c) => c.status !== 'sold');
+    const res = await fetch('data/cars.xml');
+    if (!res.ok) throw new Error('Missing cars.xml');
+    const xmlText = await res.text();
+    const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+    const cars = [...xml.querySelectorAll('car')].map((node) => ({
+      id: node.getAttribute('id'),
+      name: node.querySelector('name')?.textContent?.trim() || '',
+      brand: node.querySelector('brand')?.textContent?.trim() || '',
+      year: node.querySelector('year')?.textContent?.trim() || '',
+      price: Number(node.querySelector('price')?.textContent || 0),
+      type: node.querySelector('type')?.textContent?.trim() || '',
+      hero: node.querySelector('hero')?.textContent?.trim() || '',
+      exterior: node.querySelector('exterior')?.textContent?.trim() || '',
+      view: node.querySelector('view')?.textContent?.trim() || '',
+      interior: node.querySelector('interior')?.textContent?.trim() || '',
+      engine: node.querySelector('engine')?.textContent?.trim() || '',
+      video: node.querySelector('video')?.textContent?.trim() || '',
+      description: node.querySelector('description')?.textContent?.trim() || ''
+    }));
 
     state.cars = cars;
     state.filteredCars = cars;
@@ -114,9 +121,9 @@ async function loadCars() {
     populateFilters(cars);
     renderModelDashboard();
 
-    if (status) status.textContent = cars.length ? Loaded  cars : 'No cars in Firebase yet. Add via Admin.';
+    if (status) status.textContent = `Loaded ${cars.length} cars`;
   } catch (err) {
-    if (status) status.textContent = 'Failed to load cars from Firebase.';
+    if (status) status.textContent = 'Failed to load cars. Check data/cars.xml.';
   }
 }
 
@@ -143,7 +150,7 @@ function renderGroupedCars(container, limitPerType) {
     const section = document.createElement('div');
     section.className = 'section-block';
     const heading = document.createElement('h3');
-    heading.textContent = type + 's';
+    heading.textContent = `${type}s`;
     const grid = document.createElement('div');
     grid.className = 'card-grid';
     state.filteredCars
@@ -205,484 +212,186 @@ function renderHomeCars() {
   attachCardEvents();
 }
 
+function renderFeatured() {
+  const grid = qs('[data-featured]');
+  if (!grid) return;
+  grid.innerHTML = '';
+  state.cars.slice(0, 8).forEach((car) => {
+    const card = document.createElement('div');
+    card.className = 'card reveal';
+    card.innerHTML = carCardMarkup(car);
+    card.setAttribute('data-detail', car.id);
+    grid.appendChild(card);
+  });
+  attachCardEvents();
+}
+
 function renderTopDeals() {
-  const container = qs('[data-top-deals]');
-  if (!container) return;
-  container.innerHTML = '';
-  state.cars.slice(0, 6).forEach((car) => {
+  const wrap = qs('[data-top-deals]');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  state.cars.slice(0, 5).forEach((car) => {
     const card = document.createElement('div');
     card.className = 'deal-card';
-    card.setAttribute('data-detail', car.id);
     card.innerHTML = `
       <img src="${car.hero}" alt="${car.name}">
       <h4>${car.name}</h4>
       <p class="price">KES ${Number(car.price).toLocaleString()}</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" data-detail="${car.id}">View Details</button>
-        <button class="btn" data-add="${car.id}">Add to Cart</button>
-      </div>
+      <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
     `;
-    container.appendChild(card);
+    card.setAttribute('data-detail', car.id);
+    wrap.appendChild(card);
   });
-  qsa('[data-add]', container).forEach((btn) => btn.addEventListener('click', () => addToCart(btn.dataset.add)));
+  attachCardEvents();
 }
 
 function renderModelDashboard() {
-  const container = qs('[data-models]');
-  if (!container) return;
-  const names = [...new Set(state.cars.map((c) => c.name))].slice(0, 15);
-  container.innerHTML = '';
-  names.forEach((name) => {
-    const chip = document.createElement('button');
+  const track = qs('[data-models]');
+  if (!track) return;
+  track.innerHTML = '';
+  const models = [...new Set(state.cars.map((c) => c.name))].slice(0, 16);
+  models.forEach((model) => {
+    const chip = document.createElement('span');
     chip.className = 'dash-chip';
-    chip.type = 'button';
-    chip.textContent = name;
-    chip.addEventListener('click', () => {
-      const search = qs('[data-filter-search]');
-      if (search) {
-        search.value = name;
-        applyFilters();
-      } else {
-        window.location.href = 'inventory.html';
-      }
-    });
-    container.appendChild(chip);
+    chip.textContent = model;
+    track.appendChild(chip);
   });
-}
-
-function renderFeatured() {
-  const featured = qs('[data-featured]');
-  if (!featured) return;
-  const items = state.cars.slice(0, 8);
-  featured.innerHTML = items
-    .map(
-      (car) => `
-      <div class="card reveal" data-detail="${car.id}">
-        <img src="${car.hero}" alt="${car.name}">
-        <div class="card-body">
-          <span class="tag">${car.type}</span>
-          <h4>${car.name}</h4>
-          <p class="price">KES ${Number(car.price).toLocaleString()}</p>
-          <div class="hero-actions">
-            <button class="btn btn-primary" data-detail="${car.id}">View Details</button>
-            <button class="btn" data-add="${car.id}">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    `
-    )
-    .join('');
-  attachCardEvents();
 }
 
 function populateFilters(cars) {
   const brandSelect = qs('[data-filter-brand]');
   const typeSelect = qs('[data-filter-type]');
-  if (!brandSelect || !typeSelect) return;
-  const brands = [...new Set(cars.map((c) => c.brand))];
-  const types = [...new Set(cars.map((c) => c.type))];
-  brandSelect.innerHTML += brands.map((b) => `<option value="${b}">${b}</option>`).join('');
-  typeSelect.innerHTML += types.map((t) => `<option value="${t}">${t}</option>`).join('');
+  if (brandSelect) {
+    const brands = [...new Set(cars.map((c) => c.brand))].sort();
+    brandSelect.innerHTML = '<option value="">All Brands</option>';
+    brands.forEach((brand) => {
+      const opt = document.createElement('option');
+      opt.value = brand;
+      opt.textContent = brand;
+      brandSelect.appendChild(opt);
+    });
+  }
+  if (typeSelect) {
+    const types = [...new Set(cars.map((c) => c.type))].sort();
+    typeSelect.innerHTML = '<option value="">All Types</option>';
+    types.forEach((type) => {
+      const opt = document.createElement('option');
+      opt.value = type;
+      opt.textContent = type;
+      typeSelect.appendChild(opt);
+    });
+  }
 }
 
 function applyFilters() {
-  const search = qs('[data-filter-search]')?.value.toLowerCase() ?? '';
-  const brand = qs('[data-filter-brand]')?.value ?? '';
-  const type = qs('[data-filter-type]')?.value ?? '';
-  const maxPrice = Number(qs('[data-filter-price]')?.value ?? 0);
+  const brand = qs('[data-filter-brand]')?.value || '';
+  const type = qs('[data-filter-type]')?.value || '';
+  const priceMax = Number(qs('[data-filter-price]')?.value || 0);
+  const search = qs('[data-filter-search]')?.value?.toLowerCase() || '';
+
   state.filteredCars = state.cars.filter((car) => {
-    const matchSearch = car.name.toLowerCase().includes(search) || car.brand.toLowerCase().includes(search);
-    const matchBrand = brand ? car.brand === brand : true;
-    const matchType = type ? car.type === type : true;
-    const matchPrice = maxPrice ? Number(car.price) <= maxPrice : true;
-    return matchSearch && matchBrand && matchType && matchPrice;
+    const brandOk = !brand || car.brand === brand;
+    const typeOk = !type || car.type === type;
+    const priceOk = !priceMax || car.price <= priceMax;
+    const searchOk = !search || [car.name, car.brand, car.type].join(' ').toLowerCase().includes(search);
+    return brandOk && typeOk && priceOk && searchOk;
   });
-  state.displayCount = 24;
   renderCars();
 }
 
 function attachCardEvents() {
-  qsa('[data-detail]').forEach((btn) => {
-    btn.addEventListener('click', () => openModal(btn.dataset.detail));
-  });
   qsa('[data-add]').forEach((btn) => {
-    btn.addEventListener('click', () => addToCart(btn.dataset.add));
+    btn.onclick = (e) => {
+      e.stopPropagation();
+      addToCart(btn.getAttribute('data-add'));
+    };
+  });
+
+  qsa('[data-detail]').forEach((el) => {
+    el.onclick = () => openModal(el.getAttribute('data-detail'));
   });
 }
 
-function openModal(id) {
-  const car = state.cars.find((c) => c.id === id);
-  if (!car) return;
+function openModal(carId) {
   const modal = qs('[data-modal]');
-  const content = qs('[data-modal-content]');
-  const similar = state.cars.filter((c) => c.id !== id && c.brand === car.brand && c.type === car.type).slice(0, 3);
-  const videoBlock = car.video
-    ? `<video controls class="modal-video"><source src="${car.video}" type="video/mp4"></video>`
-    : '';
-  content.innerHTML = `
-    <div class="modal-gallery">
-      <img src="${car.exterior}" alt="${car.name} exterior">
-      <img src="${car.view}" alt="${car.name} side view">
-      <img src="${car.interior}" alt="${car.name} interior">
-      <img src="${car.engine}" alt="${car.name} engine">
-      ${videoBlock}
-    </div>
-    <div>
-      <button class="close-btn" data-close>Close</button>
+  const body = qs('[data-modal-content]');
+  if (!modal || !body) return;
+  const car = state.cars.find((c) => c.id === carId);
+  if (!car) return;
+  const related = state.cars.filter((c) => c.type === car.type && c.id !== car.id).slice(0, 4);
+  body.innerHTML = `
+    <div class="modal-header">
       <h2>${car.name}</h2>
-      <p>${car.year} • ${car.brand} • ${car.type}</p>
-      <p class="price">KES ${Number(car.price).toLocaleString()}</p>
-      <p>${car.description}</p>
-      <div class="hero-actions">
+      <button class="btn btn-ghost" data-close>Close</button>
+    </div>
+    <div class="modal-grid">
+      <div class="modal-media">
+        <img src="${car.hero}" alt="${car.name}">
+        ${car.video ? `<video controls><source src="${car.video}" type="video/mp4"></video>` : ''}
+      </div>
+      <div class="modal-info">
+        <p>${car.description}</p>
+        <p><strong>Brand:</strong> ${car.brand}</p>
+        <p><strong>Year:</strong> ${car.year}</p>
+        <p><strong>Type:</strong> ${car.type}</p>
+        <p class="price">KES ${Number(car.price).toLocaleString()}</p>
         <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
       </div>
-      <h4>Similar Cars</h4>
-      <div class="similar-row">
-        ${similar
-          .map(
-            (s) => `
-          <div class="card">
-            <img src="${s.hero}" alt="${s.name}">
-            <div class="card-body">
-              <p>${s.name}</p>
-              <button class="btn btn-secondary" data-detail="${s.id}">View</button>
-            </div>
-          </div>`
-          )
-          .join('')}
-      </div>
     </div>
+    <div class="modal-gallery">
+      <img src="${car.exterior}" alt="Exterior">
+      <img src="${car.view}" alt="Side View">
+      <img src="${car.interior}" alt="Interior">
+      <img src="${car.engine}" alt="Engine">
+    </div>
+    ${related.length ? `
+      <div class="modal-related">
+        <h3>Other ${car.type}s</h3>
+        <div class="card-grid">
+          ${related.map((item) => `
+            <div class="card" data-detail="${item.id}">
+              ${carCardMarkup(item)}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
   `;
-  modal.classList.add('open');
-  qs('[data-close]', content).addEventListener('click', () => modal.classList.remove('open'));
-  qsa('[data-detail]', content).forEach((btn) => btn.addEventListener('click', () => openModal(btn.dataset.detail)));
-  qsa('[data-add]', content).forEach((btn) => btn.addEventListener('click', () => addToCart(btn.dataset.add)));
+  modal.classList.add('is-open');
+  attachCardEvents();
+  const closeBtn = qs('[data-close]', body);
+  if (closeBtn) closeBtn.onclick = closeModal;
+}
+
+function closeModal() {
+  const modal = qs('[data-modal]');
+  const body = qs('[data-modal-content]');
+  if (modal) modal.classList.remove('is-open');
+  if (body) body.innerHTML = '';
 }
 
 function setupModalClose() {
   const modal = qs('[data-modal]');
   if (!modal) return;
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('open');
-    }
+    if (e.target === modal) closeModal();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      modal.classList.remove('open');
-    }
+    if (e.key === 'Escape') closeModal();
   });
 }
 
 function setupCartActions() {
-  qsa('[data-cart-panel]').forEach((panel) => {
-    panel.addEventListener('click', (e) => {
-      const target = e.target;
-      if (target.matches('[data-qty]')) {
-        const id = target.getAttribute('data-id');
-        const delta = target.getAttribute('data-qty') === 'plus' ? 1 : -1;
-        updateCartQty(id, delta);
-      }
-      if (target.matches('[data-remove]')) {
-        removeFromCart(target.getAttribute('data-remove'));
-      }
-    });
-  });
-}
-
-async function setupAdmin() {
-  const form = qs('[data-admin-form]');
-  const list = qs('[data-admin-list]');
-  if (!form || !list) return;
-
-  const heroInput = form.querySelector('[data-admin-hero]');
-  const imagesInput = form.querySelector('[data-admin-images]');
-  const interiorInput = form.querySelector('[data-admin-interior]');
-  const engineInput = form.querySelector('[data-admin-engine]');
-  const videoInput = form.querySelector('[data-admin-video]');
-  const imagePreview = form.querySelector('[data-admin-image-preview]');
-  const videoPreview = form.querySelector('[data-admin-video-preview]');
-
-  if (imagesInput) {
-    imagesInput.addEventListener('change', () => {
-      imagePreview.innerHTML = '';
-      [...imagesInput.files].forEach((file) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const img = document.createElement('img');
-          img.src = reader.result;
-          imagePreview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  }
-
-  if (videoInput) {
-    videoInput.addEventListener('change', () => {
-      videoPreview.innerHTML = '';
-      const file = videoInput.files[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      const video = document.createElement('video');
-      video.controls = true;
-      video.src = url;
-      videoPreview.appendChild(video);
-    });
-  }
-
-  const renderAdminList = async () => {
-    const snap = await getDocs(collection(db, 'cars'));
-    list.innerHTML = '';
-    snap.docs.forEach((d) => {
-      const car = { id: d.id, ...d.data() };
-      const card = document.createElement('div');
-      card.className = 'card admin-card';
-      card.innerHTML = `
-        <img src="${car.hero}" alt="${car.name}">
-        <div class="card-body">
-          <h3>${car.name}</h3>
-          <p>${car.brand} • ${car.year} • ${car.type}</p>
-          <p class="price">KES ${Number(car.price).toLocaleString()}</p>
-          <div class="admin-actions">
-            <button class="btn btn-primary" data-remove="${car.id}">Mark Sold</button>
-          </div>
-        </div>
-      `;
-      list.appendChild(card);
-    });
-  };
-
-  await renderAdminList();
-
-  const importBtn = form.querySelector('[data-import-xml]');
-  if (importBtn) {
-    importBtn.addEventListener('click', async () => {
-      importBtn.disabled = true;
-      importBtn.textContent = 'Importing...';
-      const res = await fetch('data/cars.xml');
-      const text = await res.text();
-      const xml = new DOMParser().parseFromString(text, 'text/xml');
-      const cars = [...xml.querySelectorAll('car')].map((node) => ({
-        name: node.querySelector('name')?.textContent ?? '',
-        brand: node.querySelector('brand')?.textContent ?? '',
-        year: Number(node.querySelector('year')?.textContent ?? 0),
-        price: Number(node.querySelector('price')?.textContent ?? 0),
-        type: node.querySelector('type')?.textContent ?? '',
-        hero: node.querySelector('hero')?.textContent ?? '',
-        exterior: node.querySelector('exterior')?.textContent ?? '',
-        view: node.querySelector('view')?.textContent ?? '',
-        interior: node.querySelector('interior')?.textContent ?? '',
-        engine: node.querySelector('engine')?.textContent ?? '',
-        video: node.querySelector('video')?.textContent ?? '',
-        description: node.querySelector('description')?.textContent ?? '',
-        status: 'available',
-        createdAt: serverTimestamp()
-      }));
-      for (const car of cars) {
-        await addDoc(collection(db, 'cars'), car);
-      }
-      importBtn.textContent = 'Import XML';
-      importBtn.disabled = false;
-      await renderAdminList();
-      await loadCars();
-    });
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const success = form.querySelector('[data-admin-success]');
-    if (success) {
-      success.textContent = 'Uploading...';
-      success.classList.add('show');
-    }
-
-    const name = form.querySelector('input[placeholder="Car Name"]').value.trim();
-    const brand = form.querySelector('input[placeholder="Brand"]').value.trim();
-    const year = Number(form.querySelector('input[placeholder="Year"]').value.trim());
-    const price = Number(form.querySelector('input[placeholder="Price (KES)"]').value.trim());
-    const type = form.querySelector('select').value.trim();
-    const description = form.querySelector('textarea').value.trim();
-
-    if (!name || !brand || !year || !price || !type || !description) return;
-
-    let heroUrl = '';
-    if (heroInput && heroInput.files[0]) {
-      const file = heroInput.files[0];
-      const result = await upload(`admin_hero/${Date.now()}_${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        multipart: true
-      });
-      heroUrl = result.url;
-    }
-
-    let exteriorUrl = '';
-    if (imagesInput && imagesInput.files[0]) {
-      const file = imagesInput.files[0];
-      const result = await upload(`admin_exterior/${Date.now()}_${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        multipart: true
-      });
-      exteriorUrl = result.url;
-    }
-
-    let interiorUrl = '';
-    if (interiorInput && interiorInput.files[0]) {
-      const file = interiorInput.files[0];
-      const result = await upload(`admin_interior/${Date.now()}_${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        multipart: true
-      });
-      interiorUrl = result.url;
-    }
-
-    let engineUrl = '';
-    if (engineInput && engineInput.files[0]) {
-      const file = engineInput.files[0];
-      const result = await upload(`admin_engine/${Date.now()}_${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        multipart: true
-      });
-      engineUrl = result.url;
-    }
-
-    let videoUrl = '';
-    if (videoInput && videoInput.files[0]) {
-      const file = videoInput.files[0];
-      const result = await upload(`admin_video/${Date.now()}_${file.name}`, file, {
-        access: 'public',
-        handleUploadUrl: '/api/upload',
-        multipart: true
-      });
-      videoUrl = result.url;
-    }
-
-    await addDoc(collection(db, 'cars'), {
-      name,
-      brand,
-      year,
-      price,
-      type,
-      hero: heroUrl,
-      exterior: exteriorUrl || heroUrl,
-      view: exteriorUrl || heroUrl,
-      interior: interiorUrl || heroUrl,
-      engine: engineUrl || heroUrl,
-      video: videoUrl,
-      description,
-      status: 'available',
-      createdAt: serverTimestamp()
-    });
-
-    if (success) {
-      success.textContent = 'Car added successfully.';
-    }
-
-    form.reset();
-    if (imagePreview) imagePreview.innerHTML = '';
-    if (videoPreview) videoPreview.innerHTML = '';
-
-    await renderAdminList();
-    await loadCars();
-  });
-
-  list.addEventListener('click', async (e) => {
+  document.addEventListener('click', (e) => {
     const target = e.target;
-    if (target.matches('[data-remove]')) {
-      const id = target.getAttribute('data-remove');
-      await updateDoc(doc(db, 'cars', id), { status: 'sold' });
-      await renderAdminList();
-      await loadCars();
+    if (!(target instanceof HTMLElement)) return;
+    const qty = target.getAttribute('data-qty');
+    const id = target.getAttribute('data-id');
+    if (qty && id) {
+      updateCartQty(id, qty === 'plus' ? 1 : -1);
     }
-  });
-}
-
-function setupSellerUpload() {
-  const form = qs('[data-seller-form]');
-  if (!form) return;
-  const imageInput = form.querySelector('[data-image-upload]');
-  const videoInput = form.querySelector('[data-video-upload]');
-  const imagePreview = form.querySelector('[data-image-preview]');
-  const videoPreview = form.querySelector('[data-video-preview]');
-
-  if (imageInput) {
-    imageInput.addEventListener('change', () => {
-      imagePreview.innerHTML = '';
-      [...imageInput.files].forEach((file) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const img = document.createElement('img');
-          img.src = reader.result;
-          imagePreview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  }
-
-  if (videoInput) {
-    videoInput.addEventListener('change', () => {
-      videoPreview.innerHTML = '';
-      const file = videoInput.files[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      const video = document.createElement('video');
-      video.controls = true;
-      video.src = url;
-      videoPreview.appendChild(video);
-    });
-  }
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const success = form.querySelector('[data-success]');
-    if (success) {
-      success.textContent = 'Uploading...';
-      success.classList.add('show');
-    }
-
-    const data = {
-      name: form.querySelector('input[placeholder="Car Make & Model"]').value.trim(),
-      email: form.querySelector('input[placeholder="Email"]').value.trim(),
-      phone: form.querySelector('input[placeholder="Phone"]').value.trim(),
-      description: form.querySelector('textarea').value.trim(),
-      createdAt: serverTimestamp()
-    };
-
-    const imageUrls = [];
-    if (imageInput && imageInput.files.length) {
-      for (const file of imageInput.files) {
-        const fileRef = ref(storage, `seller_images/${Date.now()}_${file.name}`);
-        await uploadBytes(fileRef, file);
-        imageUrls.push(await getDownloadURL(fileRef));
-      }
-    }
-
-    let videoUrl = '';
-    if (videoInput && videoInput.files.length) {
-      const file = videoInput.files[0];
-      const fileRef = ref(storage, `seller_videos/${Date.now()}_${file.name}`);
-      await uploadBytes(fileRef, file);
-      videoUrl = await getDownloadURL(fileRef);
-    }
-
-    await addDoc(collection(db, 'seller_submissions'), {
-      ...data,
-      imageUrls,
-      videoUrl
-    });
-
-    if (success) {
-      success.textContent = 'Submission sent. We will contact you shortly.';
-    }
-    form.reset();
-    imagePreview.innerHTML = '';
-    videoPreview.innerHTML = '';
+    const remove = target.getAttribute('data-remove');
+    if (remove) removeFromCart(remove);
   });
 }
 
@@ -693,22 +402,60 @@ function setupFilters() {
   });
 }
 
-function init() {
-  loadCart();
-  updateCartCount();
-  loadCars();
-  setupFilters();
-  renderCartPanel();
-  setupModalClose();
-  setupCartActions();
-  setupAdmin();
-  setupSellerUpload();
+function setupValidation() {
+  qsa('.js-validate').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fields = qsa('[data-required]', form);
+      let valid = true;
+      fields.forEach((field) => {
+        const error = field.nextElementSibling;
+        const value = field.value.trim();
+        let message = '';
+        if (!value) message = 'This field is required.';
+        if (field.dataset.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+          message = 'Enter a valid email.';
+        }
+        if (field.dataset.type === 'phone' && value && value.length < 9) {
+          message = 'Enter a valid phone number.';
+        }
+        if (error && error.classList.contains('error-text')) {
+          error.textContent = message;
+        }
+        if (message) valid = false;
+      });
+      const success = qs('[data-success]', form);
+      if (success) {
+        success.textContent = valid ? 'Submitted successfully. We will contact you soon.' : '';
+      }
+      if (valid && form.dataset.clearCart === 'true') {
+        state.cart = [];
+        saveCart();
+      }
+      if (valid) form.reset();
+    });
+  });
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function setupFlashTimer() {
+  const el = qs('#flash-timer');
+  if (!el) return;
+  let seconds = 2 * 60 * 60;
+  setInterval(() => {
+    seconds = Math.max(0, seconds - 1);
+    const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    el.textContent = `${h}:${m}:${s}`;
+  }, 1000);
+}
 
-
-
-
-
-
+document.addEventListener('DOMContentLoaded', () => {
+  loadCart();
+  setupCartActions();
+  setupFilters();
+  setupValidation();
+  setupModalClose();
+  setupFlashTimer();
+  loadCars();
+});

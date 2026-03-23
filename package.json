@@ -1,7 +1,0 @@
-﻿{
-  "name": "hss-motors-dealers",
-  "private": true,
-  "dependencies": {
-    "@vercel/blob": "latest"
-  }
-}
