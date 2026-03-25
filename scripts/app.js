@@ -13,6 +13,11 @@ const adminCode = 'HSS-ADMIN-2026';
 
 const qs = (sel, scope = document) => scope.querySelector(sel);
 const qsa = (sel, scope = document) => [...scope.querySelectorAll(sel)];
+const formatPrice = (price) => `KES ${Number(price).toLocaleString()}`;
+
+function getCardImage(car) {
+  return car.view || car.exterior || car.hero;
+}
 
 function loadCart() {
   try {
@@ -22,6 +27,7 @@ function loadCart() {
     state.cart = [];
   }
   updateCartCount();
+  renderCartPanel();
 }
 
 function saveCart() {
@@ -41,8 +47,20 @@ function addToCart(carId) {
   const existing = state.cart.find((item) => item.id === carId);
   if (existing) {
     existing.qty += 1;
+    existing.price = car.price;
+    existing.image = getCardImage(car);
+    existing.brand = car.brand;
+    existing.year = car.year;
   } else {
-    state.cart.push({ id: car.id, name: car.name, price: car.price, qty: 1 });
+    state.cart.push({
+      id: car.id,
+      name: car.name,
+      price: car.price,
+      qty: 1,
+      image: getCardImage(car),
+      brand: car.brand,
+      year: car.year
+    });
   }
   saveCart();
 }
@@ -73,19 +91,32 @@ function renderCartPanel() {
     list.innerHTML = '<p>Your cart is empty.</p>';
   }
   state.cart.forEach((item) => {
+    const car = state.cars.find((entry) => entry.id === item.id);
+    const image = car ? getCardImage(car) : item.image;
+    const brand = car?.brand || item.brand || '';
+    const year = car?.year || item.year || '';
+    const price = car?.price ?? item.price;
     const row = document.createElement('div');
     row.className = 'cart-row';
     row.innerHTML = `
-      <span>${item.name}</span>
+      <div class="cart-copy">
+        <img class="cart-thumb" src="${image}" alt="${item.name}">
+        <div class="cart-meta">
+          <h4>${item.name}</h4>
+          <p>${year}${brand ? ` • ${brand}` : ''}</p>
+          <p class="price">${formatPrice(price)}</p>
+        </div>
+      </div>
       <div class="cart-actions">
         <button class="btn btn-ghost" data-qty="minus" data-id="${item.id}">-</button>
         <span>x${item.qty}</span>
         <button class="btn btn-ghost" data-qty="plus" data-id="${item.id}">+</button>
+        <button class="btn btn-ghost" data-detail="${item.id}">View Details</button>
         <button class="btn btn-ghost" data-remove="${item.id}">Remove</button>
       </div>
     `;
     list.appendChild(row);
-    total += item.price * item.qty;
+    total += Number(price) * item.qty;
   });
   totalEl.textContent = total.toLocaleString();
 }
@@ -120,12 +151,25 @@ async function loadCars() {
       ...car,
       price: overrides[car.id] ? Number(overrides[car.id]) : car.price
     }));
+    state.cart = state.cart.map((item) => {
+      const car = state.cars.find((entry) => entry.id === item.id);
+      if (!car) return item;
+      return {
+        ...item,
+        name: car.name,
+        price: car.price,
+        image: getCardImage(car),
+        brand: car.brand,
+        year: car.year
+      };
+    });
     state.filteredCars = state.cars;
 
     renderCars();
     renderHomeCars();
     renderFeatured();
     renderTopDeals();
+    renderCartPanel();
     populateFilters(cars);
     renderModelDashboard();
     renderPromoBanner();
@@ -139,12 +183,12 @@ async function loadCars() {
 
 function carCardMarkup(car) {
   return `
-    <img src="${car.hero}" alt="${car.name}">
+    <img src="${getCardImage(car)}" alt="${car.name}">
     <div class="card-body">
       <span class="tag">${car.type}</span>
       <h3>${car.name}</h3>
       <p>${car.year} • ${car.brand}</p>
-      <p class="price">KES ${Number(car.price).toLocaleString()}</p>
+      <p class="price">${formatPrice(car.price)}</p>
       <div class="hero-actions">
         <button class="btn btn-primary" data-detail="${car.id}">View Details</button>
         <button class="btn" data-add="${car.id}">Add to Cart</button>
@@ -244,10 +288,14 @@ function renderTopDeals() {
     const card = document.createElement('div');
     card.className = 'deal-card';
     card.innerHTML = `
-      <img src="${car.hero}" alt="${car.name}">
+      <img src="${getCardImage(car)}" alt="${car.name}">
       <h4>${car.name}</h4>
-      <p class="price">KES ${Number(car.price).toLocaleString()}</p>
-      <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
+      <p>${car.year} • ${car.brand}</p>
+      <p class="price">${formatPrice(car.price)}</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-detail="${car.id}">View Details</button>
+        <button class="btn" data-add="${car.id}">Add to Cart</button>
+      </div>
     `;
     card.setAttribute('data-detail', car.id);
     wrap.appendChild(card);
@@ -327,7 +375,7 @@ function openModal(carId) {
     </div>
     <div class="modal-grid">
       <div class="modal-media">
-        <img src="${car.hero}" alt="${car.name}">
+        <img src="${getCardImage(car)}" alt="${car.name}">
         ${car.video ? `<video controls><source src="${car.video}" type="video/mp4"></video>` : ''}
       </div>
       <div class="modal-info">
@@ -335,15 +383,27 @@ function openModal(carId) {
         <p><strong>Brand:</strong> ${car.brand}</p>
         <p><strong>Year:</strong> ${car.year}</p>
         <p><strong>Type:</strong> ${car.type}</p>
-        <p class="price">KES ${Number(car.price).toLocaleString()}</p>
+        <p class="price">${formatPrice(car.price)}</p>
         <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
       </div>
     </div>
     <div class="modal-gallery">
-      <img src="${car.exterior}" alt="Exterior">
-      <img src="${car.view}" alt="Side View">
-      <img src="${car.interior}" alt="Interior">
-      <img src="${car.engine}" alt="Engine">
+      <figure>
+        <img src="${car.exterior}" alt="${car.name} exterior">
+        <figcaption>Exterior</figcaption>
+      </figure>
+      <figure>
+        <img src="${car.view}" alt="${car.name} car view">
+        <figcaption>Car View</figcaption>
+      </figure>
+      <figure>
+        <img src="${car.interior}" alt="${car.name} interior">
+        <figcaption>Interior</figcaption>
+      </figure>
+      <figure>
+        <img src="${car.engine}" alt="${car.name} engine">
+        <figcaption>Engine</figcaption>
+      </figure>
     </div>
     ${related.length ? `
       <div class="modal-related">
