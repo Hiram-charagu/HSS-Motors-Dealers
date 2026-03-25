@@ -658,12 +658,44 @@ function setupHeroAudio() {
   const markPlayed = () => sessionStorage.setItem(heroAudioKey, 'true');
   audio.addEventListener('ended', markPlayed, { once: true });
 
-  const playPromise = audio.play();
-  if (playPromise && typeof playPromise.then === 'function') {
-    playPromise.catch(() => {
-      // Autoplay prevented by browser policy
+  const interactionEvents = ['pointerdown', 'keydown', 'touchstart'];
+  let interactionBound = false;
+
+  const removeInteractionHandlers = () => {
+    if (!interactionBound) return;
+    interactionBound = false;
+    interactionEvents.forEach((eventName) => {
+      document.removeEventListener(eventName, onFirstInteraction, true);
     });
-  }
+  };
+
+  const onFirstInteraction = () => {
+    tryPlay();
+  };
+
+  const bindInteractionHandlers = () => {
+    if (interactionBound) return;
+    interactionBound = true;
+    interactionEvents.forEach((eventName) => {
+      document.addEventListener(eventName, onFirstInteraction, { once: true, capture: true });
+    });
+  };
+
+  const tryPlay = () => {
+    const playPromise = audio.play();
+    if (playPromise && typeof playPromise.then === 'function') {
+      playPromise
+        .then(() => {
+          removeInteractionHandlers();
+        })
+        .catch(() => {
+          // Autoplay can be blocked until user interaction.
+          bindInteractionHandlers();
+        });
+    }
+  };
+
+  tryPlay();
 }
 
 function loadPriceOverrides() {
