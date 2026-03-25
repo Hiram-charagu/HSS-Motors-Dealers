@@ -80,10 +80,37 @@ img {
   padding: 16px 24px;
 }
 
+.brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .brand {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--ink);
+}
+
+.mobile-controls {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-toggle {
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  background: #ffffff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-cart-pill {
+  display: none;
 }
 
 .search-bar {
@@ -917,6 +944,20 @@ img {
 }
 
 @media (max-width: 900px) {
+  .top-bar {
+    display: none;
+  }
+
+  .model-dashboard,
+  .status-bar {
+    display: none;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+  }
+
   .modal-content {
     width: min(94vw, 760px);
     padding: 20px;
@@ -973,14 +1014,38 @@ img {
     padding: 20px 14px 28px;
   }
 
-  .top-bar,
   .main-header,
   .nav,
-  .model-dashboard,
-  .status-bar,
   .footer {
     padding-left: 14px;
     padding-right: 14px;
+  }
+
+  .main-header {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .brand-row {
+    gap: 10px;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .mobile-controls {
+    display: flex;
+  }
+
+  .mobile-cart-pill {
+    display: inline-flex;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   .nav-links {
@@ -988,20 +1053,34 @@ img {
     font-size: 0.95rem;
   }
 
-  .header-actions {
+  .search-bar,
+  .header-actions,
+  .nav {
+    display: none;
+  }
+
+  .header.mobile-search-open .search-bar,
+  .header.mobile-nav-open .header-actions,
+  .header.mobile-nav-open .nav {
+    display: flex;
+  }
+
+  .header.mobile-search-open .search-bar {
+    flex-direction: column;
+    padding: 0 14px 12px;
+  }
+
+  .header.mobile-nav-open .header-actions,
+  .header.mobile-nav-open .nav {
+    padding-bottom: 12px;
+  }
+
+  .header.mobile-nav-open .header-actions {
     gap: 8px;
   }
 
-  .header-actions a,
-  .cart-pill {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .search-bar {
-    flex-direction: column;
-  }
-
+  .header.mobile-nav-open .header-actions a,
+  .header.mobile-nav-open .cart-pill,
   .search-bar button,
   .filters input,
   .filters select,

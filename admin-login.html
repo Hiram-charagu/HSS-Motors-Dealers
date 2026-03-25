@@ -14,18 +14,25 @@
       <span>Admin Access</span>
     </div>
     <div class="main-header">
-      <div class="brand">HSS Motors Dealers</div>
-      <div class="search-bar">
+      <div class="brand-row">
+        <div class="brand">HSS Motors Dealers</div>
+        <div class="mobile-controls">
+          <button type="button" class="header-toggle" data-search-toggle aria-expanded="false">Search</button>
+          <a class="cart-pill mobile-cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
+          <button type="button" class="header-toggle" data-nav-toggle aria-expanded="false">Menu</button>
+        </div>
+      </div>
+      <div class="search-bar" data-search-panel>
         <input type="text" placeholder="Search cars, models, brands" data-filter data-filter-search>
         <button type="button">Search</button>
       </div>
-      <div class="header-actions">
+      <div class="header-actions" data-nav-panel>
         <a href="signin.html">User Sign In</a>
         <a href="contact.html">Help</a>
         <a class="cart-pill" href="checkout.html">Cart: <span data-cart-count>0</span></a>
       </div>
     </div>
-    <nav class="nav">
+    <nav class="nav" data-nav-panel>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="inventory.html">Inventory</a>

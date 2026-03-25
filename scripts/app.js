@@ -599,9 +599,31 @@ function setupCreateAccount() {
   });
 }
 
+function setupHeaderToggles() {
+  qsa('.header').forEach((header) => {
+    const navToggle = qs('[data-nav-toggle]', header);
+    const searchToggle = qs('[data-search-toggle]', header);
+
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('mobile-nav-open');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+
+    if (searchToggle) {
+      searchToggle.addEventListener('click', () => {
+        const isOpen = header.classList.toggle('mobile-search-open');
+        searchToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupAuth();
   loadCart();
+  setupHeaderToggles();
   setupCartActions();
   setupCardDelegates();
   setupFilters();
