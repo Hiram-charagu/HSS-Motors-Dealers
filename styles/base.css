@@ -261,21 +261,46 @@ img {
 
 .promo-banner {
   margin: 18px 0 8px;
-  padding: 14px 18px;
-  background: linear-gradient(120deg, rgba(245, 178, 26, 0.2), rgba(47, 125, 225, 0.15));
-  border-radius: 16px;
+  padding: 18px 20px;
+  background: linear-gradient(120deg, rgba(245, 178, 26, 0.26), rgba(47, 125, 225, 0.18));
+  border-radius: 20px;
   display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 14px;
+  grid-template-columns: 88px 1fr;
+  gap: 16px;
   align-items: center;
+  border: 1px solid rgba(245, 178, 26, 0.3);
+  box-shadow: var(--shadow);
 }
 
 .promo-banner img {
-  width: 80px;
-  height: 80px;
+  width: 88px;
+  height: 88px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #ffffff;
+}
+
+.promo-banner h3 {
+  margin: 0 0 6px;
+}
+
+.promo-banner p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.promo-banner::after {
+  content: 'Limited Offer';
+  justify-self: start;
+  margin-left: 104px;
+  margin-top: -6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f5b21a 0%, #ff8a00 100%);
+  color: #1a1b1f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .promo-grid {
@@ -357,11 +382,62 @@ img {
   box-shadow: var(--shadow);
 }
 
+.poster-tile img,
 .poster-tile video {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+}
+
+.poster-spotlight {
+  position: relative;
+  min-height: 100%;
+}
+
+.poster-overlay {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.82));
+  color: #ffffff;
+  display: grid;
+  gap: 10px;
+}
+
+.poster-overlay h3,
+.poster-overlay p {
+  margin: 0;
+}
+
+.poster-overlay p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.poster-kicker {
+  justify-self: start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f5b21a;
+  color: #1a1b1f;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.poster-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.poster-tags span {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 .poster-caption {
@@ -880,6 +956,11 @@ img {
     margin-inline: auto;
   }
 
+  .promo-banner::after {
+    margin-left: 0;
+    justify-self: center;
+  }
+
   .flash-sale {
     flex-direction: column;
     align-items: flex-start;
@@ -937,6 +1018,11 @@ img {
   .modal-secondary-media,
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+
+  .poster-overlay {
+    inset: auto 12px 12px 12px;
+    padding: 14px;
   }
 
   .card img,
