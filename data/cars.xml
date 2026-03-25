@@ -123,9 +123,9 @@
     <year>2020</year>
     <price>6850000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_10.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_10.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_10.jpg</view>
+    <hero>images%20folder/model-matched/c10.jpg</hero>
+    <exterior>images%20folder/model-matched/c10.jpg</exterior>
+    <view>images%20folder/model-matched/c10.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_10.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Hyundai Tucson GLS is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -136,9 +136,9 @@
     <year>2021</year>
     <price>2800000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_01.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_01.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_01.jpg</view>
+    <hero>images%20folder/model-matched/c11.jpg</hero>
+    <exterior>images%20folder/model-matched/c11.jpg</exterior>
+    <view>images%20folder/model-matched/c11.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_11.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Kia Sportage EX is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -162,9 +162,9 @@
     <year>2018</year>
     <price>2950000</price>
     <type>Sedan</type>
-    <hero>images%20folder/clean/sedan/sedan_01.jpg</hero>
-    <exterior>images%20folder/clean/sedan/sedan_01.jpg</exterior>
-    <view>images%20folder/clean/sedan/sedan_01.jpg</view>
+    <hero>images%20folder/model-matched/c13.jpg</hero>
+    <exterior>images%20folder/model-matched/c13.jpg</exterior>
+    <view>images%20folder/model-matched/c13.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_13.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Mercedes-Benz E300 is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -227,9 +227,9 @@
     <year>2023</year>
     <price>5200000</price>
     <type>Sedan</type>
-    <hero>images%20folder/clean/sedan/sedan_06.jpg</hero>
-    <exterior>images%20folder/clean/sedan/sedan_06.jpg</exterior>
-    <view>images%20folder/clean/sedan/sedan_06.jpg</view>
+    <hero>images%20folder/model-matched/c18.jpg</hero>
+    <exterior>images%20folder/model-matched/c18.jpg</exterior>
+    <view>images%20folder/model-matched/c18.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_18.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Mazda 6 Touring is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
