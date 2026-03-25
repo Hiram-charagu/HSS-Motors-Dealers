@@ -369,59 +369,67 @@ function openModal(carId) {
   if (!car) return;
   const related = state.cars.filter((c) => c.type === car.type && c.id !== car.id).slice(0, 4);
   body.innerHTML = `
-    <div class="modal-header">
-      <h2>${car.name}</h2>
-      <button class="btn btn-ghost" data-close>Close</button>
-    </div>
-    <div class="modal-grid">
-      <div class="modal-media">
-        <img src="${getCardImage(car)}" alt="${car.name}">
-        <div class="modal-secondary-media">
-          <figure>
-            <img src="${car.interior}" alt="${car.name} interior">
-            <figcaption>Interior</figcaption>
-          </figure>
-          ${car.video ? `
+    <div class="modal-shell">
+      <div class="modal-header">
+        <h2>${car.name}</h2>
+        <button class="btn btn-ghost" data-close>Close</button>
+      </div>
+
+      <div class="modal-grid">
+        <div class="modal-media">
+          <img src="${getCardImage(car)}" alt="${car.name}">
+          <div class="modal-secondary-media">
             <figure>
-              <video controls>
-                <source src="${car.video}" type="video/mp4">
-              </video>
-              <figcaption>Short Video</figcaption>
+              <img src="${car.interior}" alt="${car.name} interior">
+              <figcaption>Interior</figcaption>
             </figure>
-          ` : ''}
+            ${car.video ? `
+              <figure>
+                <video controls>
+                  <source src="${car.video}" type="video/mp4">
+                </video>
+                <figcaption>Short Video</figcaption>
+              </figure>
+            ` : ''}
+          </div>
+        </div>
+        <div class="modal-info">
+          <p class="modal-description">${car.description}</p>
+          <div class="modal-specs">
+            <p><strong>Brand:</strong> ${car.brand}</p>
+            <p><strong>Year:</strong> ${car.year}</p>
+            <p><strong>Type:</strong> ${car.type}</p>
+          </div>
+          <p class="price">${formatPrice(car.price)}</p>
+          <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
         </div>
       </div>
-      <div class="modal-info">
-        <p>${car.description}</p>
-        <p><strong>Brand:</strong> ${car.brand}</p>
-        <p><strong>Year:</strong> ${car.year}</p>
-        <p><strong>Type:</strong> ${car.type}</p>
-        <p class="price">${formatPrice(car.price)}</p>
-        <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
+
+      <div class="modal-gallery">
+        <figure>
+          <img src="${car.exterior}" alt="${car.name} exterior">
+          <figcaption>Exterior</figcaption>
+        </figure>
+        <figure>
+          <img src="${car.view}" alt="${car.name} car view">
+          <figcaption>Car View</figcaption>
+        </figure>
       </div>
-    </div>
-    <div class="modal-gallery">
-      <figure>
-        <img src="${car.exterior}" alt="${car.name} exterior">
-        <figcaption>Exterior</figcaption>
-      </figure>
-      <figure>
-        <img src="${car.view}" alt="${car.name} car view">
-        <figcaption>Car View</figcaption>
-      </figure>
-    </div>
-    ${related.length ? `
-      <div class="modal-related">
-        <h3>Other ${car.type}s</h3>
-        <div class="card-grid">
-          ${related.map((item) => `
-            <div class="card" data-detail="${item.id}">
-              ${carCardMarkup(item)}
-            </div>
-          `).join('')}
+
+      ${related.length ? `
+        <div class="modal-related">
+          <h3>Other ${car.type}s</h3>
+          <div class="card-grid">
+            ${related.map((item) => `
+              <div class="card" data-detail="${item.id}">
+                ${carCardMarkup(item)}
+              </div>
+            `).join('')}
+          </div>
         </div>
+      ` : ''}
       </div>
-    ` : ''}
+    </div>
   `;
   modal.classList.add('is-open');
   attachCardEvents();
