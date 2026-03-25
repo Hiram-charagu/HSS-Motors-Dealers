@@ -9,6 +9,7 @@ const cartKey = 'hhsCart';
 const roleKey = 'hhsRole';
 const promoKey = 'hhsPromo';
 const priceKey = 'hhsPriceOverrides';
+const heroAudioKey = 'hhsHeroAudioPlayed';
 const adminCode = 'HSS-ADMIN-2026';
 
 const qs = (sel, scope = document) => scope.querySelector(sel);
@@ -620,10 +621,31 @@ function setupHeaderToggles() {
   });
 }
 
+function setupHeroAudio() {
+  const audio = qs('[data-hero-audio]');
+  if (!(audio instanceof HTMLAudioElement)) return;
+  if (sessionStorage.getItem(heroAudioKey) === 'true') return;
+
+  const markPlayed = () => sessionStorage.setItem(heroAudioKey, 'true');
+  audio.addEventListener('ended', markPlayed, { once: true });
+
+  const playPromise = audio.play();
+  if (playPromise && typeof playPromise.then === 'function') {
+    playPromise
+      .then(() => {
+        audio.loop = false;
+      })
+      .catch(() => {
+        audio.pause();
+      });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupAuth();
   loadCart();
   setupHeaderToggles();
+  setupHeroAudio();
   setupCartActions();
   setupCardDelegates();
   setupFilters();
