@@ -17,11 +17,7 @@ const qsa = (sel, scope = document) => [...scope.querySelectorAll(sel)];
 const formatPrice = (price) => `KES ${Number(price).toLocaleString()}`;
 
 function getCardImage(car) {
-  return car.view || car.exterior || car.hero;
-}
-
-function getGalleryImage(car) {
-  return car.exterior || car.view || car.hero;
+  return car.hero || car.view || car.exterior;
 }
 
 function loadCart() {
@@ -414,17 +410,6 @@ function openModal(carId) {
           <p class="price">${formatPrice(car.price)}</p>
           <button class="btn btn-primary" data-add="${car.id}">Add to Cart</button>
         </div>
-      </div>
-
-      <div class="modal-gallery">
-        <figure>
-          <img src="${getGalleryImage(car)}" alt="${car.name} exterior">
-          <figcaption>Exterior</figcaption>
-        </figure>
-        <figure>
-          <img src="${getCardImage(car)}" alt="${car.name} car view">
-          <figcaption>Car View</figcaption>
-        </figure>
       </div>
 
       ${related.length ? `

@@ -751,37 +751,6 @@ img {
   to { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-.modal-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  padding: 18px;
-  background: rgba(255, 255, 255, 0.76);
-  border-radius: 16px;
-  border: 1px solid rgba(17, 24, 39, 0.08);
-}
-
-.modal-gallery img {
-  border-radius: 12px;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  background: #fff9f1;
-}
-
-.modal-gallery figure {
-  margin: 0;
-  display: grid;
-  gap: 8px;
-}
-
-.modal-gallery figcaption {
-  font-size: 0.88rem;
-  color: var(--muted);
-  font-weight: 600;
-  text-align: center;
-}
-
 .modal-related {
   display: grid;
   gap: 14px;
@@ -1130,7 +1099,6 @@ img {
   .card-grid,
   .deals-row,
   .poster-grid,
-  .modal-gallery,
   .modal-secondary-media,
   .footer-grid {
     grid-template-columns: 1fr;
@@ -1164,7 +1132,6 @@ img {
   }
 
   .modal-info,
-  .modal-gallery,
   .modal-related {
     padding: 14px;
   }
