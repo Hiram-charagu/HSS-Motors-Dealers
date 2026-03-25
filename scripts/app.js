@@ -256,7 +256,7 @@ function renderHomeCars() {
     renderGroupedCars(grid, 10);
     return;
   }
-  state.cars.slice(0, 8).forEach((car) => {
+  state.filteredCars.slice(0, 8).forEach((car) => {
     const card = document.createElement('div');
     card.className = 'card reveal';
     card.innerHTML = carCardMarkup(car);
@@ -270,7 +270,7 @@ function renderFeatured() {
   const grid = qs('[data-featured]');
   if (!grid) return;
   grid.innerHTML = '';
-  state.cars.slice(0, 8).forEach((car) => {
+  state.filteredCars.slice(0, 8).forEach((car) => {
     const card = document.createElement('div');
     card.className = 'card reveal';
     card.innerHTML = carCardMarkup(car);
@@ -284,7 +284,7 @@ function renderTopDeals() {
   const wrap = qs('[data-top-deals]');
   if (!wrap) return;
   wrap.innerHTML = '';
-  state.cars.slice(0, 5).forEach((car) => {
+  state.filteredCars.slice(0, 5).forEach((car) => {
     const card = document.createElement('div');
     card.className = 'deal-card';
     card.innerHTML = `
@@ -355,6 +355,9 @@ function applyFilters() {
     return brandOk && typeOk && priceOk && searchOk;
   });
   renderCars();
+  renderHomeCars();
+  renderFeatured();
+  renderTopDeals();
 }
 
 function attachCardEvents() {
