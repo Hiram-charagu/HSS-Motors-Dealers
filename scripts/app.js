@@ -17,7 +17,11 @@ const qsa = (sel, scope = document) => [...scope.querySelectorAll(sel)];
 const formatPrice = (price) => `KES ${Number(price).toLocaleString()}`;
 
 function getCardImage(car) {
-  return car.hero || car.view || car.exterior;
+  return car.view || car.exterior || car.hero;
+}
+
+function getGalleryImage(car) {
+  return car.exterior || car.view || car.hero;
 }
 
 function loadCart() {
@@ -380,7 +384,10 @@ function openModal(carId) {
 
       <div class="modal-grid">
         <div class="modal-media">
-          <img src="${getCardImage(car)}" alt="${car.name}">
+          <div class="modal-media-frame">
+            <img src="${getCardImage(car)}" alt="${car.name}">
+            <span class="modal-media-badge">${car.year} ${car.brand}</span>
+          </div>
           <div class="modal-secondary-media">
             <figure>
               <img src="${car.interior}" alt="${car.name} interior">
@@ -397,6 +404,7 @@ function openModal(carId) {
           </div>
         </div>
         <div class="modal-info">
+          <p class="modal-eyebrow">${car.type} spotlight</p>
           <p class="modal-description">${car.description}</p>
           <div class="modal-specs">
             <p><strong>Brand:</strong> ${car.brand}</p>
@@ -410,11 +418,11 @@ function openModal(carId) {
 
       <div class="modal-gallery">
         <figure>
-          <img src="${car.exterior}" alt="${car.name} exterior">
+          <img src="${getGalleryImage(car)}" alt="${car.name} exterior">
           <figcaption>Exterior</figcaption>
         </figure>
         <figure>
-          <img src="${car.view}" alt="${car.name} car view">
+          <img src="${getCardImage(car)}" alt="${car.name} car view">
           <figcaption>Car View</figcaption>
         </figure>
       </div>

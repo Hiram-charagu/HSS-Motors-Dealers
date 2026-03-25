@@ -652,10 +652,37 @@ img {
   background: #fff9f1;
 }
 
+.modal-media-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 14px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(249, 243, 233, 0.95)),
+    radial-gradient(circle at top right, rgba(193, 18, 31, 0.12), transparent 45%);
+  border: 1px solid rgba(17, 24, 39, 0.08);
+  box-shadow: 0 18px 34px rgba(17, 24, 39, 0.1);
+}
+
 .modal-media img {
   aspect-ratio: 16 / 10;
   object-fit: contain;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+}
+
+.modal-media-badge {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(17, 24, 39, 0.78);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .modal-secondary-media {
@@ -693,6 +720,15 @@ img {
   border: 1px solid rgba(17, 24, 39, 0.08);
   border-radius: 16px;
   padding: 18px;
+}
+
+.modal-eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .modal-description {
@@ -743,6 +779,7 @@ img {
   font-size: 0.88rem;
   color: var(--muted);
   font-weight: 600;
+  text-align: center;
 }
 
 .modal-related {
@@ -1130,6 +1167,17 @@ img {
   .modal-gallery,
   .modal-related {
     padding: 14px;
+  }
+
+  .modal-media-frame {
+    padding: 10px;
+  }
+
+  .modal-media-badge {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    justify-content: center;
   }
 }
 
