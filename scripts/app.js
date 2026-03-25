@@ -376,7 +376,20 @@ function openModal(carId) {
     <div class="modal-grid">
       <div class="modal-media">
         <img src="${getCardImage(car)}" alt="${car.name}">
-        ${car.video ? `<video controls><source src="${car.video}" type="video/mp4"></video>` : ''}
+        <div class="modal-secondary-media">
+          <figure>
+            <img src="${car.interior}" alt="${car.name} interior">
+            <figcaption>Interior</figcaption>
+          </figure>
+          ${car.video ? `
+            <figure>
+              <video controls>
+                <source src="${car.video}" type="video/mp4">
+              </video>
+              <figcaption>Short Video</figcaption>
+            </figure>
+          ` : ''}
+        </div>
       </div>
       <div class="modal-info">
         <p>${car.description}</p>
@@ -395,14 +408,6 @@ function openModal(carId) {
       <figure>
         <img src="${car.view}" alt="${car.name} car view">
         <figcaption>Car View</figcaption>
-      </figure>
-      <figure>
-        <img src="${car.interior}" alt="${car.name} interior">
-        <figcaption>Interior</figcaption>
-      </figure>
-      <figure>
-        <img src="${car.engine}" alt="${car.name} engine">
-        <figcaption>Engine</figcaption>
       </figure>
     </div>
     ${related.length ? `
