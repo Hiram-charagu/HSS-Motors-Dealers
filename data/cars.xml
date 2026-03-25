@@ -6,9 +6,9 @@
     <year>2018</year>
     <price>2800000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_01.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_01.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_01.jpg</view>
+    <hero>images%20folder/model-matched/c1.png</hero>
+    <exterior>images%20folder/model-matched/c1.png</exterior>
+    <view>images%20folder/model-matched/c1.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Toyota Land Cruiser V8 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -19,9 +19,9 @@
     <year>2019</year>
     <price>3250000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_02.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_02.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_02.jpg</view>
+    <hero>images%20folder/model-matched/c2.jpg</hero>
+    <exterior>images%20folder/model-matched/c2.jpg</exterior>
+    <view>images%20folder/model-matched/c2.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_2.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Nissan Patrol Platinum is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -32,9 +32,9 @@
     <year>2020</year>
     <price>3700000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_03.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_03.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_03.jpg</view>
+    <hero>images%20folder/model-matched/c3.jpg</hero>
+    <exterior>images%20folder/model-matched/c3.jpg</exterior>
+    <view>images%20folder/model-matched/c3.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_3.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Mercedes-Benz GLE 450 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -45,9 +45,9 @@
     <year>2021</year>
     <price>4150000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_04.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_04.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_04.jpg</view>
+    <hero>images%20folder/model-matched/c4.jpg</hero>
+    <exterior>images%20folder/model-matched/c4.jpg</exterior>
+    <view>images%20folder/model-matched/c4.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_4.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>BMW X5 M Sport is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -58,9 +58,9 @@
     <year>2022</year>
     <price>4600000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_05.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_05.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_05.jpg</view>
+    <hero>images%20folder/model-matched/c5.jpg</hero>
+    <exterior>images%20folder/model-matched/c5.jpg</exterior>
+    <view>images%20folder/model-matched/c5.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_5.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Audi Q5 Quattro is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -71,9 +71,9 @@
     <year>2023</year>
     <price>5050000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_06.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_06.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_06.jpg</view>
+    <hero>images%20folder/model-matched/c6.jpg</hero>
+    <exterior>images%20folder/model-matched/c6.jpg</exterior>
+    <view>images%20folder/model-matched/c6.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_6.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Lexus RX 350 is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -84,9 +84,9 @@
     <year>2024</year>
     <price>5500000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_07.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_07.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_07.jpg</view>
+    <hero>images%20folder/model-matched/c7.jpg</hero>
+    <exterior>images%20folder/model-matched/c7.jpg</exterior>
+    <view>images%20folder/model-matched/c7.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_7.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Range Rover Evoque is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -97,9 +97,9 @@
     <year>2018</year>
     <price>5950000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_08.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_08.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_08.jpg</view>
+    <hero>images%20folder/model-matched/c8.jpg</hero>
+    <exterior>images%20folder/model-matched/c8.jpg</exterior>
+    <view>images%20folder/model-matched/c8.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_8.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Toyota Prado TX is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -110,9 +110,9 @@
     <year>2019</year>
     <price>6400000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_09.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_09.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_09.jpg</view>
+    <hero>images%20folder/model-matched/c9.jpg</hero>
+    <exterior>images%20folder/model-matched/c9.jpg</exterior>
+    <view>images%20folder/model-matched/c9.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_9.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Mazda CX-5 Touring is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -149,9 +149,9 @@
     <year>2022</year>
     <price>3250000</price>
     <type>SUV</type>
-    <hero>images%20folder/clean/suv/suv_02.jpg</hero>
-    <exterior>images%20folder/clean/suv/suv_02.jpg</exterior>
-    <view>images%20folder/clean/suv/suv_02.jpg</view>
+    <hero>images%20folder/model-matched/c12.jpg</hero>
+    <exterior>images%20folder/model-matched/c12.jpg</exterior>
+    <view>images%20folder/model-matched/c12.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_12.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Subaru Forester XT is a premium SUV with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -175,9 +175,9 @@
     <year>2019</year>
     <price>3400000</price>
     <type>Sedan</type>
-    <hero>images%20folder/clean/sedan/sedan_02.jpg</hero>
-    <exterior>images%20folder/clean/sedan/sedan_02.jpg</exterior>
-    <view>images%20folder/clean/sedan/sedan_02.jpg</view>
+    <hero>images%20folder/model-matched/c14.jpg</hero>
+    <exterior>images%20folder/model-matched/c14.jpg</exterior>
+    <view>images%20folder/model-matched/c14.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_14.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>BMW 3 Series M Sport is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -214,9 +214,9 @@
     <year>2022</year>
     <price>4750000</price>
     <type>Sedan</type>
-    <hero>images%20folder/clean/sedan/sedan_05.jpg</hero>
-    <exterior>images%20folder/clean/sedan/sedan_05.jpg</exterior>
-    <view>images%20folder/clean/sedan/sedan_05.jpg</view>
+    <hero>images%20folder/model-matched/c17.jpg</hero>
+    <exterior>images%20folder/model-matched/c17.jpg</exterior>
+    <view>images%20folder/model-matched/c17.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_17.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Honda Civic RS Turbo is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -253,9 +253,9 @@
     <year>2018</year>
     <price>6100000</price>
     <type>Sedan</type>
-    <hero>images%20folder/clean/sedan/sedan_08.jpg</hero>
-    <exterior>images%20folder/clean/sedan/sedan_08.jpg</exterior>
-    <view>images%20folder/clean/sedan/sedan_08.jpg</view>
+    <hero>images%20folder/model-matched/c20.jpg</hero>
+    <exterior>images%20folder/model-matched/c20.jpg</exterior>
+    <view>images%20folder/model-matched/c20.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_20.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Volkswagen Passat R-Line is a premium Sedan with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -331,9 +331,9 @@
     <year>2019</year>
     <price>3550000</price>
     <type>Truck</type>
-    <hero>images%20folder/clean/truck/truck_02.jpg</hero>
-    <exterior>images%20folder/clean/truck/truck_02.jpg</exterior>
-    <view>images%20folder/clean/truck/truck_02.jpg</view>
+    <hero>images%20folder/model-matched/c26.jpg</hero>
+    <exterior>images%20folder/model-matched/c26.jpg</exterior>
+    <view>images%20folder/model-matched/c26.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_26.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Ford Ranger Wildtrak is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -357,9 +357,9 @@
     <year>2021</year>
     <price>4450000</price>
     <type>Truck</type>
-    <hero>images%20folder/clean/truck/truck_04.jpg</hero>
-    <exterior>images%20folder/clean/truck/truck_04.jpg</exterior>
-    <view>images%20folder/clean/truck/truck_04.jpg</view>
+    <hero>images%20folder/model-matched/c28.jpg</hero>
+    <exterior>images%20folder/model-matched/c28.jpg</exterior>
+    <view>images%20folder/model-matched/c28.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_28.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Mitsubishi L200 GLS is a premium Truck with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -474,9 +474,9 @@
     <year>2018</year>
     <price>3250000</price>
     <type>Hatchback</type>
-    <hero>images%20folder/clean/hatchback/hatchback_01.jpg</hero>
-    <exterior>images%20folder/clean/hatchback/hatchback_01.jpg</exterior>
-    <view>images%20folder/clean/hatchback/hatchback_01.jpg</view>
+    <hero>images%20folder/model-matched/c37.jpg</hero>
+    <exterior>images%20folder/model-matched/c37.jpg</exterior>
+    <view>images%20folder/model-matched/c37.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Volkswagen Golf TSI is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -604,9 +604,9 @@
     <year>2021</year>
     <price>3250000</price>
     <type>Hatchback</type>
-    <hero>images%20folder/clean/hatchback/hatchback_01.jpg</hero>
-    <exterior>images%20folder/clean/hatchback/hatchback_01.jpg</exterior>
-    <view>images%20folder/clean/hatchback/hatchback_01.jpg</view>
+    <hero>images%20folder/model-matched/c47.jpg</hero>
+    <exterior>images%20folder/model-matched/c47.jpg</exterior>
+    <view>images%20folder/model-matched/c47.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_02.mp4</video>
     <description>Audi A1 Sportback is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -617,9 +617,9 @@
     <year>2022</year>
     <price>3700000</price>
     <type>Hatchback</type>
-    <hero>images%20folder/clean/hatchback/hatchback_02.jpg</hero>
-    <exterior>images%20folder/clean/hatchback/hatchback_02.jpg</exterior>
-    <view>images%20folder/clean/hatchback/hatchback_02.jpg</view>
+    <hero>images%20folder/model-matched/c48.jpg</hero>
+    <exterior>images%20folder/model-matched/c48.jpg</exterior>
+    <view>images%20folder/model-matched/c48.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Mercedes-Benz A200 is a premium Hatchback with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -630,9 +630,9 @@
     <year>2018</year>
     <price>3400000</price>
     <type>Van</type>
-    <hero>images%20folder/clean/van/van_01.jpg</hero>
-    <exterior>images%20folder/clean/van/van_01.jpg</exterior>
-    <view>images%20folder/clean/van/van_01.jpg</view>
+    <hero>images%20folder/model-matched/c49.jpg</hero>
+    <exterior>images%20folder/model-matched/c49.jpg</exterior>
+    <view>images%20folder/model-matched/c49.jpg</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_01.mp4</video>
     <description>Toyota Hiace Super GL is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
@@ -773,9 +773,9 @@
     <year>2022</year>
     <price>3850000</price>
     <type>Van</type>
-    <hero>images%20folder/clean/van/van_04.jpg</hero>
-    <exterior>images%20folder/clean/van/van_04.jpg</exterior>
-    <view>images%20folder/clean/van/van_04.jpg</view>
+    <hero>images%20folder/model-matched/c60.JPG</hero>
+    <exterior>images%20folder/model-matched/c60.JPG</exterior>
+    <view>images%20folder/model-matched/c60.JPG</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <video>images%20folder/clean/videos/video_03.mp4</video>
     <description>Isuzu NV200 is a premium Van with inspected condition, refined interior, and Nairobi-ready handling.</description>
