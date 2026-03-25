@@ -665,8 +665,8 @@
     <price>3700000</price>
     <type>Hatchback</type>
     <hero>images%20folder/hhs_cars_200_images/car_141.png</hero>
-    <exterior>images%20folder/car_views/car_201_front.png</exterior>
-    <view>images%20folder/car_views/car_201_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_141.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_141.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_4.mp4</video>
@@ -679,8 +679,8 @@
     <price>3400000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_142.png</hero>
-    <exterior>images%20folder/car_views/car_220_front.png</exterior>
-    <view>images%20folder/car_views/car_220_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_142.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_142.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -693,8 +693,8 @@
     <price>3850000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_143.png</hero>
-    <exterior>images%20folder/car_views/car_221_front.png</exterior>
-    <view>images%20folder/car_views/car_221_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_143.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_143.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -707,8 +707,8 @@
     <price>4300000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_144.png</hero>
-    <exterior>images%20folder/car_views/car_222_front.png</exterior>
-    <view>images%20folder/car_views/car_222_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_144.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_144.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -721,8 +721,8 @@
     <price>4750000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_145.png</hero>
-    <exterior>images%20folder/car_views/car_223_front.png</exterior>
-    <view>images%20folder/car_views/car_223_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_145.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_145.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -735,8 +735,8 @@
     <price>5200000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_146.png</hero>
-    <exterior>images%20folder/car_views/car_224_front.png</exterior>
-    <view>images%20folder/car_views/car_224_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_146.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_146.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -749,8 +749,8 @@
     <price>5650000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_147.png</hero>
-    <exterior>images%20folder/car_views/car_225_front.png</exterior>
-    <view>images%20folder/car_views/car_225_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_147.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_147.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -763,8 +763,8 @@
     <price>6100000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_148.png</hero>
-    <exterior>images%20folder/car_views/car_226_front.png</exterior>
-    <view>images%20folder/car_views/car_226_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_148.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_148.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -777,8 +777,8 @@
     <price>6550000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_149.png</hero>
-    <exterior>images%20folder/car_views/car_227_front.png</exterior>
-    <view>images%20folder/car_views/car_227_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_149.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_149.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -791,8 +791,8 @@
     <price>7000000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_15.png</hero>
-    <exterior>images%20folder/car_views/car_228_front.png</exterior>
-    <view>images%20folder/car_views/car_228_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_15.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_15.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -805,8 +805,8 @@
     <price>7450000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_150.png</hero>
-    <exterior>images%20folder/car_views/car_229_front.png</exterior>
-    <view>images%20folder/car_views/car_229_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_150.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_150.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -819,8 +819,8 @@
     <price>3400000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_151.png</hero>
-    <exterior>images%20folder/car_views/car_230_front.png</exterior>
-    <view>images%20folder/car_views/car_230_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_151.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_151.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
@@ -833,8 +833,8 @@
     <price>3850000</price>
     <type>Van</type>
     <hero>images%20folder/hhs_cars_200_images/car_152.png</hero>
-    <exterior>images%20folder/car_views/car_231_front.png</exterior>
-    <view>images%20folder/car_views/car_231_rear.png</view>
+    <exterior>images%20folder/hhs_cars_200_images/car_152.png</exterior>
+    <view>images%20folder/hhs_cars_200_images/car_152.png</view>
     <interior>images%20folder/hhs_car_interiors_images/interior_1.png</interior>
     <engine>images%20folder/engine_photos/engine_1.png</engine>
     <video>images%20folder/car_videos/car_video_5.mp4</video>
