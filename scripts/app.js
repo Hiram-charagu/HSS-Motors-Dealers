@@ -1,3 +1,20 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD7LY3WyVii2o_OwjYspWW5hFW8vRfs_uA",
+  authDomain: "hss-motor-dealers.firebaseapp.com",
+  databaseURL: "https://hss-motor-dealers-default-rtdb.firebaseio.com",
+  projectId: "hss-motor-dealers",
+  storageBucket: "hss-motor-dealers.firebasestorage.app",
+  messagingSenderId: "485609737841",
+  appId: "1:485609737841:web:e9d218a924949e75c215d0"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 const state = {
   cars: [],
   filteredCars: [],
@@ -127,24 +144,44 @@ async function loadCars() {
   const target = qs('[data-cars]') || qs('[data-featured]') || qs('[data-home-cars]') || qs('[data-models]');
   if (!target) return;
   try {
-    const res = await fetch('data/cars.xml');
-    if (!res.ok) throw new Error('Missing cars.xml');
-    const xmlText = await res.text();
-    const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
-    const cars = [...xml.querySelectorAll('car')].map((node) => ({
-      id: node.getAttribute('id'),
-      name: node.querySelector('name')?.textContent?.trim() || '',
-      brand: node.querySelector('brand')?.textContent?.trim() || '',
-      year: node.querySelector('year')?.textContent?.trim() || '',
-      price: Number(node.querySelector('price')?.textContent || 0),
-      type: node.querySelector('type')?.textContent?.trim() || '',
-      hero: node.querySelector('hero')?.textContent?.trim() || '',
-      exterior: node.querySelector('exterior')?.textContent?.trim() || '',
-      view: node.querySelector('view')?.textContent?.trim() || '',
-      interior: node.querySelector('interior')?.textContent?.trim() || '',
-      video: node.querySelector('video')?.textContent?.trim() || '',
-      description: node.querySelector('description')?.textContent?.trim() || ''
-    }));
+    let cars = [];
+
+    try {
+      const dbRef = ref(db, 'cars');
+      const snapshot = await get(dbRef);
+      if (snapshot.exists()) {
+        cars = snapshot.val();
+      }
+    } catch {
+      cars = [];
+    }
+
+    if (!cars.length) {
+      const res = await fetch('data/cars.xml');
+      if (!res.ok) throw new Error('Missing cars.xml');
+      const xmlText = await res.text();
+      const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+      cars = [...xml.querySelectorAll('car')].map((node) => ({
+        id: node.getAttribute('id'),
+        name: node.querySelector('name')?.textContent?.trim() || '',
+        brand: node.querySelector('brand')?.textContent?.trim() || '',
+        year: node.querySelector('year')?.textContent?.trim() || '',
+        price: Number(node.querySelector('price')?.textContent || 0),
+        type: node.querySelector('type')?.textContent?.trim() || '',
+        hero: node.querySelector('hero')?.textContent?.trim() || '',
+        exterior: node.querySelector('exterior')?.textContent?.trim() || '',
+        view: node.querySelector('view')?.textContent?.trim() || '',
+        interior: node.querySelector('interior')?.textContent?.trim() || '',
+        video: node.querySelector('video')?.textContent?.trim() || '',
+        description: node.querySelector('description')?.textContent?.trim() || ''
+      }));
+      try {
+        const dbRef = ref(db, 'cars');
+        await set(dbRef, cars);
+      } catch {
+        // XML fallback remains the source if Firebase write is unavailable.
+      }
+    }
 
     const overrides = loadPriceOverrides();
     state.cars = cars.map((car) => ({
@@ -623,31 +660,43 @@ function setupHeroAudio() {
 
   const playPromise = audio.play();
   if (playPromise && typeof playPromise.then === 'function') {
-    playPromise
-      .then(() => {
-        audio.loop = false;
-      })
-      .catch(() => {
-        audio.pause();
-      });
+    playPromise.catch(() => {
+      // Autoplay prevented by browser policy
+    });
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setupAuth();
-  loadCart();
-  setupHeaderToggles();
-  setupHeroAudio();
-  setupCartActions();
-  setupCardDelegates();
-  setupFilters();
-  setupValidation();
-  setupModalClose();
-  setupFlashTimer();
-  setupAdminTools();
-  setupCreateAccount();
-  loadCars();
-});
+function loadPriceOverrides() {
+  try {
+    return JSON.parse(localStorage.getItem(priceKey)) || {};
+  } catch {
+    return {};
+  }
+}
+
+function loadPromo() {
+  try {
+    const raw = localStorage.getItem(promoKey);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (typeof parsed === 'string') {
+      return { title: parsed, subtitle: '', image: '' };
+    }
+    return parsed;
+  } catch {
+    const fallback = localStorage.getItem(promoKey);
+    return fallback ? { title: fallback, subtitle: '', image: '' } : null;
+  }
+}
+
+function savePromo(data) {
+  localStorage.setItem(promoKey, JSON.stringify(data));
+  renderPromoBanner();
+}
+
+function savePriceOverrides(overrides) {
+  localStorage.setItem(priceKey, JSON.stringify(overrides));
+}
 
 function renderPromoBanner() {
   const banner = qs('[data-promo-banner]');
@@ -658,6 +707,7 @@ function renderPromoBanner() {
     return;
   }
   banner.hidden = false;
+  banner.style.display = '';
   const title = qs('[data-promo-title]', banner);
   const subtitle = qs('[data-promo-subtitle]', banner);
   const image = qs('[data-promo-image]', banner);
@@ -669,33 +719,6 @@ function renderPromoBanner() {
   } else if (image) {
     image.style.display = 'none';
   }
-}
-
-function loadPromo() {
-  try {
-    const raw = localStorage.getItem(promoKey);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-
-function savePromo(data) {
-  localStorage.setItem(promoKey, JSON.stringify(data));
-  renderPromoBanner();
-}
-
-function loadPriceOverrides() {
-  try {
-    const raw = localStorage.getItem(priceKey);
-    return raw ? JSON.parse(raw) : {};
-  } catch {
-    return {};
-  }
-}
-
-function savePriceOverrides(overrides) {
-  localStorage.setItem(priceKey, JSON.stringify(overrides));
 }
 
 function populateAdminPriceSelect() {
@@ -751,3 +774,19 @@ function setupAdminTools() {
     });
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadCart();
+  loadCars();
+  setupCartActions();
+  setupCardDelegates();
+  setupModalClose();
+  setupFilters();
+  setupValidation();
+  setupAuth();
+  setupFlashTimer();
+  setupAdminTools();
+  setupCreateAccount();
+  setupHeaderToggles();
+  setupHeroAudio();
+});
