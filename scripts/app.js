@@ -17,7 +17,7 @@ const qsa = (sel, scope = document) => [...scope.querySelectorAll(sel)];
 const formatPrice = (price) => `KES ${Number(price).toLocaleString()}`;
 
 function getCardImage(car) {
-  return car.view || car.exterior || car.hero;
+  return car.hero || car.view || car.exterior;
 }
 
 function loadCart() {
