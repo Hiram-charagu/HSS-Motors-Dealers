@@ -491,6 +491,22 @@ function setupFilters() {
     el.addEventListener('input', applyFilters);
     el.addEventListener('change', applyFilters);
   });
+
+  qsa('.search-bar').forEach((bar) => {
+    const input = qs('[data-filter-search]', bar);
+    const button = qs('button', bar);
+    if (button) {
+      button.addEventListener('click', applyFilters);
+    }
+    if (input) {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          applyFilters();
+        }
+      });
+    }
+  });
 }
 
 function setupValidation() {
