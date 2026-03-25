@@ -142,7 +142,6 @@ async function loadCars() {
       exterior: node.querySelector('exterior')?.textContent?.trim() || '',
       view: node.querySelector('view')?.textContent?.trim() || '',
       interior: node.querySelector('interior')?.textContent?.trim() || '',
-      engine: node.querySelector('engine')?.textContent?.trim() || '',
       video: node.querySelector('video')?.textContent?.trim() || '',
       description: node.querySelector('description')?.textContent?.trim() || ''
     }));
