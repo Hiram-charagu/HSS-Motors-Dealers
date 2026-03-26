@@ -660,6 +660,7 @@ function setupHeroAudio() {
 
   const interactionEvents = ['pointerdown', 'keydown', 'touchstart'];
   let interactionBound = false;
+  let playbackStarted = false;
 
   const removeInteractionHandlers = () => {
     if (!interactionBound) return;
@@ -674,10 +675,10 @@ function setupHeroAudio() {
   };
 
   const bindInteractionHandlers = () => {
-    if (interactionBound) return;
+    if (interactionBound || playbackStarted) return;
     interactionBound = true;
     interactionEvents.forEach((eventName) => {
-      document.addEventListener(eventName, onFirstInteraction, { once: true, capture: true });
+      document.addEventListener(eventName, onFirstInteraction, true);
     });
   };
 
@@ -686,12 +687,21 @@ function setupHeroAudio() {
     if (playPromise && typeof playPromise.then === 'function') {
       playPromise
         .then(() => {
+          playbackStarted = true;
           removeInteractionHandlers();
         })
         .catch(() => {
           // Autoplay can be blocked until user interaction.
           bindInteractionHandlers();
         });
+      return;
+    }
+
+    playbackStarted = !audio.paused;
+    if (playbackStarted) {
+      removeInteractionHandlers();
+    } else {
+      bindInteractionHandlers();
     }
   };
 
